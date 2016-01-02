@@ -1,0 +1,55 @@
+#include "unitdlg.h"
+#include "unitupdatedlg.h"
+#include "dbhelper.h"
+#include <QtGui>
+#include <QDebug>
+#include <QMessageBox>
+
+UnitDlg::UnitDlg(QString title, QString tableName,QWidget *parent) :
+    QDialog(parent), modelUnits(tableName), tableName(tableName)
+{
+    setupUi(this);
+    this->setWindowTitle(title);
+    unitList->setModel(&modelUnits);
+    unitList->setSelectionMode(QAbstractItemView::SingleSelection);
+    selectRow(0);
+}
+
+void UnitDlg::addUnit() {
+    UnitUpdateDlg nameDlg(tableName);
+    nameDlg.setWindowFlags(Qt::Dialog|Qt::CustomizeWindowHint);
+    if (nameDlg.exec() == QDialog::Accepted) {
+        modelUnits.addRow(nameDlg.getName());
+        selectRow(modelUnits.rowCount(QModelIndex())-1);
+    }
+}
+
+void UnitDlg::delUnit() {
+    QModelIndex idx = unitList->currentIndex();
+    if (idx.isValid()) {
+        int row = idx.row();
+        if (modelUnits.deleteRow(idx) == FOREIGN_KEY_FAIL)
+            QMessageBox::critical(this,tr("Ошибка"),tr("Данная единица используется в системе, удалить её нельзя!"));
+        else
+            selectRow(row==modelUnits.rowCount(QModelIndex())?row-1:row);
+    }
+}
+
+void UnitDlg::selectRow(const int row) {
+    unitList->selectionModel()->clearSelection();
+    QModelIndex index = modelUnits.index(row,0);
+    if(index.isValid()) {
+        unitList->selectionModel()->select(index,QItemSelectionModel::Select);
+        unitList->setCurrentIndex(index);
+    }
+}
+
+void UnitDlg::updateUnit(QModelIndex currentIdx) {
+    Unit currUnit = modelUnits.unitFromIndex(currentIdx);
+    UnitUpdateDlg nameDlg(tableName, currUnit.id);
+    nameDlg.setWindowFlags(Qt::Dialog|Qt::CustomizeWindowHint);
+    nameDlg.setName(currUnit.name);
+    if (nameDlg.exec() == QDialog::Accepted) {
+        modelUnits.updateRow(currentIdx,nameDlg.getName());
+    }
+}

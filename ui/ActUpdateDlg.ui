@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ActUpdateDlg</class>
+ <widget class="QDialog" name="ActUpdateDlg">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>809</width>
+    <height>557</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Update action</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
+         <number>10</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>3</number>
+        </property>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="spinHour">
+          <property name="maximum">
+           <number>23</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>m.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QDateTimeEdit" name="editDateTime">
+          <property name="currentSection">
+           <enum>QDateTimeEdit::MinuteSection</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QSpinBox" name="spinMin">
+          <property name="maximum">
+           <number>55</number>
+          </property>
+          <property name="singleStep">
+           <number>5</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QComboBox" name="comboCats">
+          <property name="minimumSize">
+           <size>
+            <width>180</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+          <property name="currentIndex">
+           <number>-1</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Date and time:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QToolButton" name="btnCat">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../TM3res.qrc">
+            <normaloff>:/images/Basic_set_Png/search_32.png</normaloff>:/images/Basic_set_Png/search_32.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Category:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>h.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="labelCat">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>162</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>295</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Category name:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>223</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btnAddRate">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../TM3res.qrc">
+            <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btnDelRate">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../TM3res.qrc">
+            <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelTag">
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Tag:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btnAddTag">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../TM3res.qrc">
+            <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="btnDelTag">
+          <property name="minimumSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../TM3res.qrc">
+            <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QTableView" name="tableRates">
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListView" name="listViewTags">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Comment:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPlainTextEdit" name="editComment">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>60</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+  <action name="actionCloseAll">
+   <property name="text">
+    <string>CloseAll</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>comboCats</tabstop>
+  <tabstop>spinMin</tabstop>
+  <tabstop>spinHour</tabstop>
+  <tabstop>buttonBox</tabstop>
+  <tabstop>editComment</tabstop>
+  <tabstop>btnCat</tabstop>
+  <tabstop>tableRates</tabstop>
+  <tabstop>btnAddRate</tabstop>
+  <tabstop>btnDelRate</tabstop>
+  <tabstop>editDateTime</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../TM3res.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>237</x>
+     <y>537</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>314</x>
+     <y>537</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnAddRate</sender>
+   <signal>clicked()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>addRate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>408</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>668</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnDelRate</sender>
+   <signal>clicked()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>delRate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>449</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>718</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tableRates</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>updateRate(QModelIndex)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>307</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCat</sender>
+   <signal>clicked()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>showCatTree()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>518</x>
+     <y>66</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>536</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboCats</sender>
+   <signal>editTextChanged(QString)</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>catFieldEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>409</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>418</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editDateTime</sender>
+   <signal>timeChanged(QTime)</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>timeChanged(QTime)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>69</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>62</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinMin</sender>
+   <signal>editingFinished()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>minsEditFinished()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>293</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>263</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCloseAll</sender>
+   <signal>triggered()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>enterPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>369</x>
+     <y>232</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnAddTag</sender>
+   <signal>clicked()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>addTag()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>726</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>850</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnDelTag</sender>
+   <signal>clicked()</signal>
+   <receiver>ActUpdateDlg</receiver>
+   <slot>delTag()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>765</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>843</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>catFieldEdited()</slot>
+  <slot>showCatTree()</slot>
+  <slot>addRate()</slot>
+  <slot>delRate()</slot>
+  <slot>updateRate(QModelIndex)</slot>
+  <slot>timeChanged(QTime)</slot>
+  <slot>minsEditFinished()</slot>
+  <slot>enterPressed()</slot>
+  <slot>addTag()</slot>
+  <slot>delTag()</slot>
+ </slots>
+</ui>
