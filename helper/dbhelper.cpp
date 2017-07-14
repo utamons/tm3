@@ -139,12 +139,6 @@ void DBHelper::createStructure() {
 			"constraint act_rate_link_pk primary key (act_id,rate_id)"
 			")";
 
-	// Учёт рабочего времени
-	const QString daysSQL = "CREATE TABLE  if not exists days ("
-							"dt  numeric primary key," // Первая минута дня (в минутах с epoch)
-			"type integer not null check(type>-1 and type<7) "//(0-рабочий, 1-переработка, 2-выходной,3-праздник,4-отпуск,5-болезнь,6-отгул)
-			")";
-
 	execQuery(catTableSQL);
 	execQuery(unitRbSQL);
 	execQuery(rateRbTableSQL);
@@ -153,7 +147,6 @@ void DBHelper::createStructure() {
 	execQuery(actRateLinkSQL);
 	execQuery(actTagLinkSQL);
 	execQuery(budjetSQL);
-	execQuery(daysSQL);
     execQuery(tagRbSQL);
 	execQuery(catTagLinkSQL);
 }
