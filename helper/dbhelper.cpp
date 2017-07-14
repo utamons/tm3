@@ -101,7 +101,7 @@ void DBHelper::createStructure() {
 								  "constraint    act_tag_link_pk primary key (act_id,tag_id))";
 
 	// Связь категорий и меток по умолчанию
-	const QString catTagLinkSQL = "create table if not exists act_tag_link ("
+    const QString catTagLinkSQL = "create table if not exists cat_tag_link ("
 								  "cat_id        integer references cat_rb (id) not null,"
 								  "tag_id        integer references tag_rb (id) not null,"
 								  "constraint    cat_tag_link_pk primary key (cat_id,tag_id))";
@@ -154,6 +154,7 @@ void DBHelper::createStructure() {
 	execQuery(actTagLinkSQL);
 	execQuery(budjetSQL);
 	execQuery(daysSQL);
+    execQuery(tagRbSQL);
 	execQuery(catTagLinkSQL);
 }
 
