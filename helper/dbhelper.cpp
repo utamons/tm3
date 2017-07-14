@@ -18,7 +18,7 @@ void DBHelper::close() {
 	}
 }
 
-// Проверяем наличие файла базы. Если его нет, создаём базу и её структуру.
+// Checking for database file. Creating this if needed.
 void DBHelper::checkDB() {
 
 	QString dbPath = getWorkPath().append(QDir::toNativeSeparators("/tm2db.sqlite"));
@@ -40,22 +40,20 @@ void DBHelper::checkDB() {
 		QString errorMsg = "Cannot open database:";
 		errorMsg = errorMsg.append(db.lastError().text());
 		qDebug() << errorMsg;
-		QMessageBox::critical(nullptr, QApplication::tr("Ошибка базы данных"), errorMsg);
+		QMessageBox::critical(nullptr, QApplication::tr("Database error"), errorMsg);
 		QApplication::exit(1);
 	}
 	execQuery("PRAGMA foreign_keys = ON");
 }
 
-/*
- Создаём структуру. Если таблицы уже есть - они не создаются. Так что если изменилась
- структура таблицы - надо удалять файл базы.
- */
+
+// Creating database structure.
 void DBHelper::createStructure() {
 
-	//  Справочник категорий
+	//  Categories refbook
 	const QString catTableSQL = "create table if not exists cat_rb ("
-								"id             integer primary key autoincrement," // Первичный ключ
-			"abbrev         char(20) not null unique,"// Аббревиатура
+	                            "id             integer primary key autoincrement," // Primary key
+	        "abbrev         char(20) not null unique,"// Abbreviation
 			"parent_id      integer,"// Ссылка на родительский узел
 			"virtual        integer not null check(virtual=0 or virtual=1),"// 1 - виртуальная категория (просто каталог), 0 - обычная категория, можно использовать
 			"name           varchar(80) not null unique,"// Наименование
@@ -159,7 +157,7 @@ SqlQueryStatus execQuery(const QString query, bool checkForeignKey) {
 			return FOREIGN_KEY_FAIL;
 		} else {
 			qDebug() << q.lastError();
-			QMessageBox::critical(nullptr, QObject::tr("Ошибка базы данных"), q.lastError().text());
+			QMessageBox::critical(nullptr, QObject::tr("Database error"), q.lastError().text());
 			QApplication::exit(1);
 		}
 	}
@@ -173,7 +171,7 @@ SqlQueryStatus execQuery(QSqlQuery q, bool checkForeignKey) {
 			return FOREIGN_KEY_FAIL;
 		} else {
 			qDebug() << q.lastError();
-			QMessageBox::critical(nullptr, QObject::tr("Ошибка базы данных"), q.lastError().text());
+			QMessageBox::critical(nullptr, QObject::tr("Database error"), q.lastError().text());
 			QApplication::exit(1);
 		}
 	}
@@ -192,7 +190,7 @@ void execQuery(QSqlQuery q, std::function<void()> f) {
 		}
 	} else {
 		qDebug() << q.lastError();
-		QMessageBox::critical(nullptr, QObject::tr("Ошибка базы данных"), q.lastError().text());
+		QMessageBox::critical(nullptr, QObject::tr("Database error"), q.lastError().text());
 		QApplication::exit(1);
 	}
 }
@@ -202,7 +200,7 @@ void beginTransaction() {
     const QString error = "Cannot begin transaction (database does not support it?)";
     if (!getDb().transaction()) {
         qDebug() << error;
-        QMessageBox::critical(nullptr, QObject::tr("Ошибка базы данных"), error);
+		QMessageBox::critical(nullptr, QObject::tr("Database error"), error);
         QApplication::exit(1);
     }
 }
@@ -211,7 +209,7 @@ void commit() {
     QSqlDatabase db = getDb();
     if (!db.commit()) {
         qDebug() << db.lastError();
-        QMessageBox::critical(nullptr, QObject::tr("Ошибка базы данных"), db.lastError().text());
+		QMessageBox::critical(nullptr, QObject::tr("Database error"), db.lastError().text());
         QApplication::exit(1);
     }
 }
@@ -220,7 +218,7 @@ void rollback() {
     QSqlDatabase db = getDb();
     if (!db.rollback()) {
         qDebug() << db.lastError();
-        QMessageBox::critical(nullptr, QObject::tr("Ошибка базы данных"), db.lastError().text());
+		QMessageBox::critical(nullptr, QObject::tr("Database error"), db.lastError().text());
         QApplication::exit(1);
     }
 }
