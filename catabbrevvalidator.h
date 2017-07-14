@@ -2,7 +2,7 @@
 #define CATABBREVVALIDATOR_H
 
 #include <QValidator>
-#include "Category.h"
+#include "category.h"
 
 class CatAbbrevValidator : public QValidator
 {

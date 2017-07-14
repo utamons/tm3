@@ -4,3 +4,4 @@ TM3.pro.user
 .cproject
 .project
 .settings
+*.cpp.autosave

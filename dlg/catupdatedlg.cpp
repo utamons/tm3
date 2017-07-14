@@ -16,7 +16,7 @@
 // TODO Надо бы сделать автоматический выбор последней метки и оценки в таблице/списке
 
 CatUpdateDlg::CatUpdateDlg(Category cat, QWidget *parent) :
-    QDialog(parent), selfId(cat.id), rateModel(cat.rates), tagModel(cat.tagList) {
+    QDialog(parent), rateModel(cat.rates), tagModel(cat.tagList), selfId(cat.id) {
     setupUi(this);
 
     this->cat = cat;

@@ -15,11 +15,11 @@ bool checkWorkDir() {
 	QDir wdDir(wdPath);
 
 	if (!wdDir.exists()) {
-		if (!wdDir.mkdir(wdPath)) {
-			result = false;
-			qDebug() << QObject::tr("Cannot make ").append(wdDir.absolutePath());
+			if (!wdDir.mkdir(wdPath)) {
+					result = false;
+					qDebug() << QObject::tr("Cannot make ").append(wdDir.absolutePath());
+				}
 		}
-	}
 
 	return result;
 }
@@ -34,17 +34,17 @@ quint64 toEpochMins(QDate dt) {
 }
 
 QDateTime toDateTime(quint64 epochMins) {
-    return QDateTime::fromMSecsSinceEpoch(epochMins * 60000L);
+	return QDateTime::fromMSecsSinceEpoch(epochMins * 60000L);
 }
 
 QDate toDate(quint64 epochMins) {
-    return QDateTime::fromMSecsSinceEpoch(epochMins * 60000L).date();
+	return QDateTime::fromMSecsSinceEpoch(epochMins * 60000L).date();
 }
 
 // получаем путь к рабочему каталогу
 QString getWorkPath() {
-    QString homePath = "/Users/oleg/Documents";
-    QString wdPath = homePath.append("/db");
+	QString homePath = "/Users/oleg/Documents";
+	QString wdPath = homePath.append("/db");
 	return QDir::toNativeSeparators(wdPath);
 }
 
@@ -76,8 +76,8 @@ QString getCopyrightYears() {
 	QString str = QString::number(START_DEV_YEAR);
 	QDate qDate = QDate::currentDate();
 	if (qDate.year() > START_DEV_YEAR) {
-		str.append("-").append(QString::number(qDate.year()));
-	}
+			str.append("-").append(QString::number(qDate.year()));
+		}
 	return str;
 }
 
@@ -88,20 +88,20 @@ QString timeFromMins(int mins) {
 	int h = mins / 60;
 
 	if (h > 0) {
-		result.append(QString::number(h));
-		result.append(QObject::tr(" h. "));
-	}
+			result.append(QString::number(h));
+			result.append(QObject::tr(" h. "));
+		}
 
 	if (m > 0) {
-		result.append(QString::number(m));
-		result.append(QObject::tr(" m. "));
-	}
+			result.append(QString::number(m));
+			result.append(QObject::tr(" m. "));
+		}
 
 	if (m + h == 0) {
-		result.append("--");
-	}
+			result.append("--");
+		}
 
-    return result;
+	return result;
 }
 
 // Округляет время до ближайших 5 минут.
@@ -131,29 +131,29 @@ bool checkLock(QString lockPath) {
 	QFile lockFile(lockPath);
 	bool retCode = true;
 	if (lockFile.exists()) {
-		int answ = askUser(QObject::tr("Probably one copy of TM3 alreary running. Or incorrect exit occured."),
-				QObject::tr("Launch this copy?"));
-		if (answ == QMessageBox::No) {
-			retCode = false;
-		}
-	} else {
-		if (!lockFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-			qDebug() << "Cannot open lock file";
-			QMessageBox::critical(nullptr, "Error", "Cannot open lock file!");
-			retCode = false;
+			int answ = askUser(QObject::tr("Probably one copy of TM3 alreary running. Or incorrect exit occured."),
+			                   QObject::tr("Launch this copy?"));
+			if (answ == QMessageBox::No) {
+					retCode = false;
+				}
 		} else {
-			QTextStream out(&lockFile);
-			out << "x";
+			if (!lockFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+					qDebug() << "Cannot open lock file";
+					QMessageBox::critical(nullptr, "Error", "Cannot open lock file!");
+					retCode = false;
+				} else {
+					QTextStream out(&lockFile);
+					out << "x";
+				}
 		}
-	}
 	return retCode;
 }
 
 void removeLock(QString lockPath) {
 	QFile lockFile(lockPath);
 	if (lockFile.exists()) {
-		lockFile.remove();
-	}
+			lockFile.remove();
+		}
 }
 
 bool isNumeric(QString val) {
@@ -168,5 +168,5 @@ bool isEmpty(QString val) {
 
 
 QString tr(const char *str) {
-     return QObject::tr(str);
+	return QObject::tr(str);
 }

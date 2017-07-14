@@ -3,7 +3,7 @@
 #include "unitlistmodel.h"
 
 RateValUpdateDlg::RateValUpdateDlg(RateVal rateval, QList<RateVal> excludes, QWidget *parent) :
-    rateModel(extractRateList(excludes)), QDialog(parent) {
+    QDialog(parent), rateModel(extractRateList(excludes)) {
 
     setupUi(this);
 

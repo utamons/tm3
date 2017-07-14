@@ -10,7 +10,7 @@ class WorkTimeReportHelper : public QObject
 {
     Q_OBJECT
 public:
-    explicit WorkTimeReportHelper(const std::shared_ptr<PeriodHelper> pHelper, QObject *parent = 0):pHelper(pHelper),QObject(parent){}
+	explicit WorkTimeReportHelper(const std::shared_ptr<PeriodHelper> pHelper, QObject *parent = 0):QObject(parent),pHelper(pHelper){}
 
     QString workDaysStr() const { return tr("Рабочих дней: ") + QString::number(getWorkDays());}
     QString workTimeStr() const { return tr("Asia-Soft в день: ") + getWorkTime();}

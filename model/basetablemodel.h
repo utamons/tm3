@@ -33,7 +33,7 @@ public:
         return result;
     }
 
-    virtual QVariant headerData(int section, Qt::Orientation orientation,  int role) const = 0;
+	virtual QVariant headerData(int section, Qt::Orientation orientation,  int role) const override = 0;
 
     QModelIndex index(int row, int column,
                                          const QModelIndex &parent=QModelIndex()) const override {

@@ -1,7 +1,7 @@
 #include "budjetreporthelper.h"
 
 BudjetReportHelper::BudjetReportHelper(const std::shared_ptr<PeriodHelper>, QObject *parent) :
-	QObject(parent), pHelper(pHelper) {
+    QObject(parent) {
 }
 
 QList<std::pair<QString,QString>> BudjetReportHelper::getCatBudjetReport() const {
