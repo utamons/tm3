@@ -35,7 +35,6 @@ public slots:
 	void actSimpleReport();
 	void today();
 	void actBudjetDlg();
-	void actDaysDlg();
 
 private:
 	QString getLoadStr(double load);

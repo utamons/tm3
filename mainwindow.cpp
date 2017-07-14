@@ -10,7 +10,6 @@
 #include "simplereportdlg.h"
 #include <QtGlobal>
 #include "budjetlistdlg.h"
-#include "daysdlg.h"
 #include "taglistdlg.h"
 #include "periodhelper.h"
 #include "ratereporthelper.h"
@@ -227,13 +226,6 @@ void MainWindow::actTagDlg() {
     tagDlg.setModal(true);
     tagDlg.setWindowFlags(Qt::Dialog | Qt::WindowCloseButtonHint);
     tagDlg.exec();
-}
-
-void MainWindow::actDaysDlg() {
-    DaysDlg daysDlg(this);
-    daysDlg.setModal(true);
-    daysDlg.setWindowFlags(Qt::Dialog | Qt::WindowCloseButtonHint);
-    daysDlg.exec();
 }
 
 QString MainWindow::getLoadStr(double load) {

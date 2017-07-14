@@ -28,24 +28,20 @@ SOURCES += main.cpp\
     dlg/budjetupdatedlg.cpp \
     dlg/cattreedlg.cpp \
     dlg/catupdatedlg.cpp \
-    dlg/daysdlg.cpp \
     dlg/ratelistdlg.cpp \
     dlg/rateupdatedlg.cpp \
     dlg/ratevalupdatedlg.cpp \
     dlg/simplereportdlg.cpp \
     helper/budjetreporthelper.cpp \
     helper/catreporthelper.cpp \
-    helper/dayshelper.cpp \
     helper/dbhelper.cpp \
     helper/periodhelper.cpp \
     helper/ratereporthelper.cpp \
     helper/reporthelper.cpp \
     helper/tagreporthelper.cpp \
-    helper/worktimereporthelper.cpp \
     model/activitytablemodel.cpp \
     model/budjettablemodel.cpp \
     model/cattreemodel.cpp \
-    model/daystablemodel.cpp \
     model/ratelistmodel.cpp \
     model/ratevaltablemodel.cpp \
     model/tagcombomodel.cpp \
@@ -67,7 +63,6 @@ HEADERS  += mainwindow.h \
     dlg/budjetupdatedlg.h \
     dlg/cattreedlg.h \
     dlg/catupdatedlg.h \
-    dlg/daysdlg.h \
     dlg/ratelistdlg.h \
     dlg/rateupdatedlg.h \
     dlg/ratevalupdatedlg.h \
@@ -75,22 +70,18 @@ HEADERS  += mainwindow.h \
     entity/activity.h \
     entity/budjet.h \
     entity/category.h \
-    entity/day.h \
     entity/rate.h \
     entity/rateval.h \
     entity/unit.h \
     helper/budjetreporthelper.h \
     helper/catreporthelper.h \
-    helper/dayshelper.h \
     helper/dbhelper.h \
     helper/periodhelper.h \
     helper/ratereporthelper.h \
     helper/reporthelper.h \
     helper/tagreporthelper.h \
-    helper/worktimereporthelper.h \
     model/budjettablemodel.h \
     model/cattreemodel.h \
-    model/daystablemodel.h \
     model/ratelistmodel.h \
     model/ratevaltablemodel.h \
     model/tagcombomodel.h \
@@ -119,7 +110,6 @@ FORMS    += \
     ui/BudjetUpdateDlg.ui \
     ui/CatTreeDlg.ui \
     ui/CatUpdateDlg.ui \
-    ui/DaysDlg.ui \
     ui/MainWindow.ui \
     ui/RateListDlg.ui \
     ui/RateUpdateDlg.ui \

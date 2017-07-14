@@ -189,23 +189,6 @@
          <number>0</number>
         </property>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="radCat">
-           <property name="text">
-            <string>Cats</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QRadioButton" name="radTag">
-           <property name="text">
-            <string>Tags</string>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="1">
           <widget class="QRadioButton" name="radBudjet">
            <property name="text">
@@ -220,10 +203,20 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
-          <widget class="QRadioButton" name="radWorkTime">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="radCat">
            <property name="text">
-            <string>Worktime</string>
+            <string>Cats</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QRadioButton" name="radTag">
+           <property name="text">
+            <string>Tags</string>
            </property>
           </widget>
          </item>
@@ -493,22 +486,6 @@
     <hint type="destinationlabel">
      <x>692</x>
      <y>-28</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>radWorkTime</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>SimpleReportDlg</receiver>
-   <slot>radWorkTimeClicked(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>681</x>
-     <y>34</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>694</x>
-     <y>-1</y>
     </hint>
    </hints>
   </connection>

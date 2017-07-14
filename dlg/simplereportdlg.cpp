@@ -6,7 +6,6 @@
 #include "tagreporthelper.h"
 #include "ratereporthelper.h"
 #include "budjetreporthelper.h"
-#include "worktimereporthelper.h"
 
 SimpleReportDlg::SimpleReportDlg(QWidget *parent) :
 	QDialog(parent) {
@@ -111,20 +110,7 @@ void SimpleReportDlg::makeReport() {
 		if (rateRep.length() > 0) {
 			rHelper.appendValueTable(tr("Rates"),rateRep);
 		}
-    } else if (radWorkTime->isChecked()) {
-        rHelper.appendHeader(tr("Report of ").append(pHelper->getName()));
-        rHelper.appendParagraph("");
-        rHelper.appendParagraph(tr("ATTENTION! Work time counts up to current date!"));
-        rHelper.appendParagraph("");
-        const WorkTimeReportHelper wHelper(pHelper);
-        rHelper.appendParagraph(wHelper.workDaysStr());
-        rHelper.appendParagraph(wHelper.workTimeStr());
-        rHelper.appendParagraph(wHelper.illnessDaysStr());
-        rHelper.appendParagraph(wHelper.illnessListDaysStr());
-        rHelper.appendParagraph(wHelper.notUsedDaysStr());
-        rHelper.appendParagraph(wHelper.overWorkDaysStr());
-        rHelper.appendParagraph(wHelper.debtDaysStr());
-    }
+		}
 
 	editSummary->setHtml(rHelper.getHTML());
 	editSummary->setReadOnly(true);
@@ -143,10 +129,6 @@ void SimpleReportDlg::radTagClicked(bool) {
 }
 
 void SimpleReportDlg::radBudjetClicked(bool) {
-    makeReport();
-}
-
-void SimpleReportDlg::radWorkTimeClicked(bool) {
     makeReport();
 }
 

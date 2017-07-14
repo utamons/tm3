@@ -54,7 +54,6 @@ public slots:
 	void radRateClicked(bool val);
 	void radTagClicked(bool val);
 	void radBudjetClicked(bool val);
-    void radWorkTimeClicked(bool val);
 
 signals:
 
