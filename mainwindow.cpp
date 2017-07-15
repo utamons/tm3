@@ -171,9 +171,9 @@ void MainWindow::delAct() {
 }
 
 void MainWindow::about() {
-    QString msg = tr("<b>TM3</b> Persona timetracker.<br/><br/> ") +
+	QString msg = tr("<b>TM3</b> Personal timetracker.<br/><br/> ") +
 
-            tr("Version ") + PROGRAM_VERSION + "<br/>Copyright (c) " + getCopyrightYears() + ", CornKnight.";
+	        tr("Version ") + PROGRAM_VERSION + "<br/>Copyleft (c) " + getCopyrightYears() + ", CornKnight.";
 
     QMessageBox::about(this, tr("About"), msg);
 }

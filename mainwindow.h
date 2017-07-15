@@ -21,7 +21,7 @@ protected:
 public slots:
 	void about();
 	void addAct();
-	void addAct2();   // Это из-за неудобной кнопки Ins на ноуте.
+	void addAct2();   // Additional insert for my notebook keyboard
 	void updateAct(QModelIndex idx);
 	void updateAction();
 	void delAct();

@@ -38,7 +38,7 @@ void RateListDlg::delRate(){
     if (idx.isValid()) {
         int row = idx.row();
         if (model.remove(idx) == FOREIGN_KEY_FAIL)
-            QMessageBox::critical(this,tr("Ошибка"),tr("Данная оценка используется в системе, удалить её нельзя!"));
+			QMessageBox::critical(this,tr("Error"),tr("The rate is in use, you cannot remove this!"));
         else
             selectRow(row==model.rowCount(QModelIndex())?row-1:row);
     }

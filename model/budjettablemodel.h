@@ -5,13 +5,13 @@
 #include "dbhelper.h"
 
 enum BudjetListFilter {
-  BF_DAY=0,		// действующие типа день
-  BF_WEEK,		// действующие типа неделя
-  BF_MONTH,	// действующие типа месяц
-  BF_QUARTER,	// действующие типа квартал
-  BF_YEAR,		// действующие типа год
-  BF_ALL,		// все действующие
-  BF_OLD		// устаревшие
+  BF_DAY=0,
+  BF_WEEK,
+  BF_MONTH,
+  BF_QUARTER,
+  BF_YEAR,
+  BF_ALL,
+  BF_OLD
 };
 
 class BudjetTableModel: public QAbstractTableModel {

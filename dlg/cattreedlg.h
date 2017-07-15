@@ -42,7 +42,7 @@ private:
 
     CatTreeModel model;
     bool restoreState;
-    bool rbMode; // режим справочника
-    Category rbSelected; // выбранная в режиме справочника
+	bool rbMode; // refbook mode
+	Category rbSelected; // selected in refbook mode
     
 };

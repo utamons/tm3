@@ -4,12 +4,9 @@
 #include <QDebug>
 #include <QRegExp>
 
-/*
- маленькие полезные штучки.
-*/
 
-const int START_DEV_YEAR = 2013; // год начала разработки
-const QString PROGRAM_VERSION = "0.5.3"; // версия программы
+const int START_DEV_YEAR = 2013;
+const QString PROGRAM_VERSION = "0.0.1";
 
 bool checkWorkDir();
 QString getWorkPath();

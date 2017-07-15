@@ -23,9 +23,9 @@ UnitUpdateDlg(Unit unit= Unit(), QWidget *parent=nullptr) :  QDialog(parent) {
 void accept() {
     unit.name = nameLineEdit->text().trimmed();
     if (unit.name.length() == 0) {
-       QMessageBox::warning(this,tr("Ошибка"),tr("Необходимо ввести название!"));
+			QMessageBox::warning(this,tr("Error"),tr("Please, enter unit name!"));
     } else if (!isDBUnique<T>(unit)) {
-        QMessageBox::warning(this,tr("Ошибка"),tr("Такая единица уже есть в справочнике!"));
+			QMessageBox::warning(this,tr("Error"),tr("Unit with this name already exists!"));
     } else {
         QDialog::accept();
     }

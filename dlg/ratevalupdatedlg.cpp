@@ -29,7 +29,7 @@ RateValUpdateDlg::RateValUpdateDlg(RateVal rateval, QList<RateVal> excludes, QWi
 void RateValUpdateDlg::accept() {
     Rate rate = rateModel.entityFromIndex(rateModel.index(comboRates->currentIndex(),0));
     if (editValue->text().trimmed().length() == 0) {
-        QMessageBox::warning(this,tr("Ошибка"),tr("Необходимо ввести значение!"));
+			QMessageBox::warning(this,tr("Error"),tr("Enter value!"));
     } else {
         rateVal.rate = rate;
         rateVal.value = editValue->text().trimmed().toInt();

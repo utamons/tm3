@@ -8,7 +8,7 @@
 TagListDlg::TagListDlg(QWidget *parent) :  QDialog(parent)
 {
     setupUi(this);
-    this->setWindowTitle(tr("Метки"));
+	this->setWindowTitle(tr("Tags"));
     unitList->setModel(&model);
     unitList->setSelectionMode(QAbstractItemView::SingleSelection);
     selectRow(0);
@@ -28,7 +28,7 @@ void TagListDlg::delUnit() {
     if (idx.isValid()) {
         int row = idx.row();
         if (model.remove(idx) == FOREIGN_KEY_FAIL)
-            QMessageBox::critical(this,tr("Ошибка"),tr("Данная единица используется в системе, удалить её нельзя!"));
+			QMessageBox::critical(this,tr("Error"),tr("This tag is in use!"));
         else
             selectRow(row==model.rowCount(QModelIndex())?row-1:row);
     }

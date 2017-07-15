@@ -10,12 +10,9 @@
 #include "tagcombodlg.h"
 #include "taglistmodel.h"
 
-// Размеры колонок таблицы в процентах:
 #define COL1_PC_SIZE 50
 #define COL2_PC_SIZE 25
 #define COL3_PC_SIZE 25
-
-// TODO Надо бы сделать автоматический выбор последней метки и оценки в таблице/списке
 
 ActUpdateDlg::ActUpdateDlg(Activity act, QDateTime beginTime, QWidget *parent) :
         QDialog(parent), rateModel(act.rateValList), tagModel(act.tagList) {
@@ -23,21 +20,19 @@ ActUpdateDlg::ActUpdateDlg(Activity act, QDateTime beginTime, QWidget *parent) :
 
     this->act = act;
 
-	// Клавиши для привязки к actionCloseAll
+	// Keys bidnigs to actionCloseAll
 	QList<QKeySequence> rets;
 	rets.append(QKeySequence("Enter"));
 	rets.append(QKeySequence("Return"));
 	actionCloseAll->setShortcuts(rets);
 
-	// Привязываем закрытие формы на Enter к основным элементам
+	// The form will close on pressing Enter on these elements
 	comboCats->addAction(actionCloseAll);
 	spinHour->addAction(actionCloseAll);
 	spinMin->addAction(actionCloseAll);
 	spinMin->addAction(actionCloseAll);
 	editDateTime->addAction(actionCloseAll);
 	editComment->addAction(actionCloseAll);
-
-	// Общие настройки
 
     tableRates->setModel(&rateModel);
 	tableRates->setStyleSheet("QHeaderView::section {"
@@ -51,17 +46,16 @@ ActUpdateDlg::ActUpdateDlg(Activity act, QDateTime beginTime, QWidget *parent) :
 			"}");
 	tableRates->horizontalHeader()->setStretchLastSection(true);
 	tableRates->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-	tableRates->horizontalHeader()->setStyleSheet("text-align: left"); // прикольно но без этого не работает предыдущий стиль
+	tableRates->horizontalHeader()->setStyleSheet("text-align: left");
 	tableRates->verticalHeader()->setVisible(false);
 	tableRates->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-	// Выставляем дату, время и длительность
     if (this->act.id == 0)
         editDateTime->setDateTime(roundTime(ActivityTableModel::getLastTime()));
 	else
         editDateTime->setDateTime(act.time);
 
-    // последняя запись в журнале и прошло не более 24-х часов
+	// if this is the last record, and less than 24 hrs passed.
     if (beginTime.addSecs(act.mins * 60) == ActivityTableModel::getLastTime()
             && beginTime.addSecs(24 * 3600) >= QDateTime::currentDateTime()
             && beginTime.secsTo(QDateTime::currentDateTime()) > 0) {
@@ -76,9 +70,9 @@ ActUpdateDlg::ActUpdateDlg(Activity act, QDateTime beginTime, QWidget *parent) :
         spinMin->setValue(act.mins % 60);
 	}
 
-	// Выставляем категорию
+	// Set category
 
-	comboCats->setEditable(false); // это чтобы событие редактирования не срабатывало при заполнении комбо
+	comboCats->setEditable(false);
     comboCats->setModel(&catModel);
     comboCats->setEditable(true);
     comboCats->setValidator(new CatAbbrevValidator(catModel.getList(), this));
@@ -91,7 +85,6 @@ ActUpdateDlg::ActUpdateDlg(Activity act, QDateTime beginTime, QWidget *parent) :
 	}
     labelCat->setText(this->act.cat.name);
 	
-	// Выставляем метку
     listViewTags->setModel(&tagModel);
 
     editComment->setPlainText(this->act.comment);
@@ -165,14 +158,14 @@ void ActUpdateDlg::accept() {
 	int mins = spinHour->value() * 60 + spinMin->value();
 
 	if (mins == 0) {
-		QMessageBox::warning(this, tr("Ошибка"),
-				tr("Необходимо ввестrи длительность!"));
+		QMessageBox::warning(this, tr("Error"),
+		        tr("Enter time duration!"));
 	} else if (comboCats->lineEdit()->text().length() == 0) {
-		QMessageBox::warning(this, tr("Ошибка"),
-				tr("Необходимо выбрать категорию!"));
+		QMessageBox::warning(this, tr("Error"),
+		        tr("Please choose category!"));
     } else if (ActivityTableModel::isCrossTime(editDateTime->dateTime(), mins, act.id)) {
-		QMessageBox::warning(this, tr("Ошибка"),
-				tr("Событие попадает в пределы другого!"));
+		QMessageBox::warning(this, tr("Error"),
+		        tr("This action time overlaps other action!"));
 	} else {
         act.comment = editComment->toPlainText();
         act.time = editDateTime->dateTime();

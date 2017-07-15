@@ -35,7 +35,7 @@ BudjetUpdateDlg::BudjetUpdateDlg(Budjet budjet, QWidget *parent) :
 
 	canChangeType = true;
     if (budjet.catId > 0) {
-		typeChanged(0); // Индекс и так 0, поэтому событие изменения приходится вызывать принудительно.
+		typeChanged(0);
     } else if (budjet.rateId > 0) {
 		comboType->setCurrentIndex(1);
     } else if (budjet.tagId > 0) {
@@ -53,18 +53,18 @@ void BudjetUpdateDlg::typeChanged(int idx) {
 	if (canChangeType) {
 		Q_ASSERT(idx > -1 && idx < 3);
 		switch (idx) {
-		// Категории
+
 		case 0: {
 			setCatMode(true);
-			comboChoice->setEditable(false); // это чтобы событие редактирования не срабатывало при заполнении комбо
+			comboChoice->setEditable(false);
             comboChoice->setModel(&catModel);
 			comboChoice->setEditable(true);
 
-            if (budjet.catId > 0) { // Если происходит инициализация формы
+			if (budjet.catId > 0) {
                 selCat = catModel.byId(budjet.catId);
                 lblCat->setText(selCat.name);
                 comboChoice->setCurrentIndex(comboChoice->findText(selCat.abbrev));
-			} else { // Произошло ручное переключение
+			} else {
                 selCat = catModel.byAbbrev(comboChoice->lineEdit()->text());
                 lblCat->setText(selCat.name);
                 budjet.rateId = 0;
@@ -72,24 +72,24 @@ void BudjetUpdateDlg::typeChanged(int idx) {
 			}
 			break;
 		}
-			// Оценки
+
 		case 1: {
 			setCatMode(false);
             comboChoice->setModel(&rateModel);
-            if (budjet.rateId > 0) { // Происходит инициализация формы
+			if (budjet.rateId > 0) {
                 QString summary = rateModel.rateById(budjet.rateId).toString();
 				comboChoice->setCurrentIndex(comboChoice->findText(summary));
-			} else { // Произошло ручное переключение
+			} else {
                 budjet.catId = 0;
                 budjet.tagId = 0;
 			}
 			break;
 		}
-			// Метки
+
 		case 2: {
 			setCatMode(false);
             comboChoice->setModel(&tagModel);
-            if (budjet.tagId > 0) { // Происходит инициализация формы
+			if (budjet.tagId > 0) {
                 QString tagName = tagModel.tagById(budjet.tagId).name;
 				comboChoice->setCurrentIndex(comboChoice->findText(tagName));
 			} else {
@@ -129,17 +129,17 @@ void BudjetUpdateDlg::catLookup() {
 
 void BudjetUpdateDlg::accept() {
 	if (isEmpty(txtName->text())) {
-		error(tr("Введи название!"));
+		error(tr("Enter name!"));
 	} else if (isEmpty(txtHigh->text()) && isEmpty(txtLow->text())) {
-		error(tr("Введи границы!"));
+		error(tr("Enter limits!"));
 	} else if (!isEmpty(txtHigh->text()) && !isNumeric(txtHigh->text())){
-		error(tr("Верхняя граница - не число!"));
+		error(tr("Upper limit is not a number!"));
 	} else if (!isEmpty(txtLow->text()) && !isNumeric(txtLow->text())){
-		error(tr("Нижняя граница - не число!"));
+		error(tr("Lower limit is not a number!"));
 	} else if(dtEnd->date() <= QDate::currentDate()) {
-		error(tr("Дата завершения должна быть больше текущей."));
+		error(tr("Last date should be after current date!"));
 	} else if(BudjetTableModel::hasName(txtName->text(),budjet.id)) {
-		error(tr("Бюджет с таким названием уже есть в справочнике."));
+		error(tr("Budjet with given name already exists."));
 	} else {
         budjet.name = txtName->text();
 
@@ -185,9 +185,9 @@ void BudjetUpdateDlg::initComboPeriod() {
 void BudjetUpdateDlg::initComboType() {
 	QStringList iList;
 
-	iList.append(tr("категория"));
-	iList.append(tr("оценка"));
-	iList.append(tr("метка"));
+	iList.append(tr("category"));
+	iList.append(tr("rate"));
+	iList.append(tr("label"));
 
 	comboType->addItems(iList);
 

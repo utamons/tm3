@@ -8,12 +8,10 @@
 #include "taglistmodel.h"
 
 
-// Размеры колонок таблицы в процентах:
 #define COL1_PC_SIZE 50
 #define COL2_PC_SIZE 25
 #define COL3_PC_SIZE 25
 
-// TODO Надо бы сделать автоматический выбор последней метки и оценки в таблице/списке
 
 CatUpdateDlg::CatUpdateDlg(Category cat, QWidget *parent) :
     QDialog(parent), rateModel(cat.rates), tagModel(cat.tagList), selfId(cat.id) {
@@ -21,7 +19,6 @@ CatUpdateDlg::CatUpdateDlg(Category cat, QWidget *parent) :
 
     this->cat = cat;
     tableRate->setModel(&rateModel);
-    // Можно вот так красиво:
     tableRate->setStyleSheet("QHeaderView::section {"
                              "background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,"
                              "stop:0 #616161, stop: 0.5 #505050,"
@@ -33,7 +30,7 @@ CatUpdateDlg::CatUpdateDlg(Category cat, QWidget *parent) :
                              "}");
     tableRate->horizontalHeader()->setStretchLastSection(true);
     tableRate->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-    tableRate->horizontalHeader()->setStyleSheet("text-align: left"); // прикольно но без этого не работает предыдущий стиль
+	tableRate->horizontalHeader()->setStyleSheet("text-align: left");
     tableRate->verticalHeader()->setVisible(false);
     tableRate->setSelectionBehavior(QAbstractItemView::SelectRows);
 
@@ -121,11 +118,11 @@ void CatUpdateDlg::accept() {
     cat.tagList = tagModel.getList();
 
     if (name.length() == 0) {
-        QMessageBox::warning(this,tr("Ошибка"),tr("Необходимо ввести название!"));
+			QMessageBox::warning(this,tr("Error"),tr("Enter name!"));
     } else if (abbrev.length() == 0) {
-        QMessageBox::warning(this,tr("Ошибка"),tr("Необходимо ввести сокращение!"));
+			QMessageBox::warning(this,tr("Error"),tr("Enter abbrev!"));
     } else if (!isDBUnique<CatListModel>(cat)) {
-        QMessageBox::warning(this,tr("Ошибка"),tr("Такая категория уже есть в дереве!"));
+			QMessageBox::warning(this,tr("Error"),tr("This category already exists!"));
     } else {
         QDialog::accept();
     }

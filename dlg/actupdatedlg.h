@@ -39,7 +39,7 @@ public slots:
     void tagModelChanged();
 
 private:
-    Activity act;			// копия с которой работает форма
+	Activity act;
     CatListModel catModel;
     RateValTableModel rateModel;
     ActTagsListModel tagModel;

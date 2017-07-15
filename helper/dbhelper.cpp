@@ -55,15 +55,15 @@ void DBHelper::createStructure() {
 	                            "id             integer primary key autoincrement," // Primary key
 	        "abbrev         char(20) not null unique,"// Abbreviation
 			"parent_id      integer,"// Ссылка на родительский узел
-			"virtual        integer not null check(virtual=0 or virtual=1),"// 1 - виртуальная категория (просто каталог), 0 - обычная категория, можно использовать
-			"name           varchar(80) not null unique,"// Наименование
-			"expanded       integer not null check(expanded=0 or expanded=1),"// Развернут или нет узел дерева
-			"comment		varchar(255)"// Комментарий
+	        "virtual        integer not null check(virtual=0 or virtual=1),"// 1 - virtual category, 0 - arbitrary category
+	        "name           varchar(80) not null unique,"
+	        "expanded       integer not null check(expanded=0 or expanded=1),"// Expanded in the tree view
+	        "comment		varchar(255)"
 			")";
 
-	// Бюджеты
+	// Budgets
 	const QString budjetSQL = "create table if not exists budjet ("
-							  "id             integer primary key autoincrement," // Первичный ключ
+	                          "id             integer primary key autoincrement,"
 			"name           varchar(80) not null,"// Наименование
 			"workdays		integer check(workdays>-1 and workdays<2)," // Учитывать только рабочие дни (0-нет,1-да)
 			"descendant		integer check(descendant>-1 and descendant<2)," // Учитывать потомков (0-нет,1-да)

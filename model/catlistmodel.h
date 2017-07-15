@@ -3,8 +3,8 @@
 #include "baselistmodel.h"
 #include "category.h"
 
-/**
- * Cписочная модель категорий. Для выпадающих списков и подобной лабуды.
+/*
+ * Category list for drop-down lists and so on
  */
 class CatListModel : public BaseListModel<Category>
 {

@@ -11,7 +11,7 @@ enum SqlQueryStatus {
 };
 
 /*
-  Всякая всячина, связанная с БД - объявления.
+  DB related staff
  */
 class DBHelper
 {
@@ -19,7 +19,7 @@ class DBHelper
 public:
     QSqlDatabase db;
 
-    // Поскольку используем только одно соединение с базой, то класс у нас - синглетон.
+	// We use only one connection to DB.
     static DBHelper* getInstance()
     {
         if (!_self) {
@@ -28,25 +28,23 @@ public:
         return _self;
     }
 
-    // закрывает соединение с базой
     void close();
 
 protected:
-    static DBHelper* _self; // екземпляр синглетона
+	static DBHelper* _self;
     DBHelper();
 
-    // Проверяем наличие файла базы. Если его нет, создаём базу и её структуру.
     void checkDB();
     void createStructure();
 };
 
-// Запрос, не возвращающий результатов
+// Executes SQL query, which doesn't return result set.
 SqlQueryStatus execQuery(const QString query, bool checkForeignKey = false);
 
-// Выполнение подготовленного запроса, не возвращающего результатов.
+// Executes prepared SQL query, which doesn't return result set.
 SqlQueryStatus execQuery(QSqlQuery query, bool checkForeignKey = false);
 
-// Выполнение функции для каждой записи запроса
+// Performs function on every record
 void execQuery(QSqlQuery q, std::function<void ()> f);
 
 void beginTransaction();
@@ -55,10 +53,9 @@ void commit();
 
 void rollback();
 
-// Получаем текущий экземпляр БД
 QSqlDatabase getDb();
 
-// Шаблон для получения значения поля из выполненного запроса.
+// Gets field value
 template <typename T>
 T getField(QSqlQuery q, const char *fieldName);
 template <typename T>

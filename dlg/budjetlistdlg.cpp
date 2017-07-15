@@ -19,7 +19,7 @@ BudjetListDlg::BudjetListDlg(QWidget *parent) :
 			"}");
 	tblBudjets->horizontalHeader()->setStretchLastSection(true);
 	tblBudjets->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-	tblBudjets->horizontalHeader()->setStyleSheet("text-align: left"); // прикольно но без этого не работает предыдущий стиль
+	tblBudjets->horizontalHeader()->setStyleSheet("text-align: left");
 	tblBudjets->verticalHeader()->setVisible(false);
 	tblBudjets->setSelectionBehavior(QAbstractItemView::SelectRows);
 }
@@ -39,7 +39,7 @@ void BudjetListDlg::del() {
 	if (idx.isValid()) {
 		int row = idx.row();
 		if (model.deleteRow(idx) == FOREIGN_KEY_FAIL)
-			QMessageBox::critical(this, QObject::tr("Ошибка"), "С данным бюджетом связаны отчёты, удалить его нельзя!");
+			QMessageBox::critical(this, QObject::tr("Error"), "There are reports, based on this budget!");
 		else
 			selectRow(row==model.rowCount(QModelIndex())?row-1:row);
 	}

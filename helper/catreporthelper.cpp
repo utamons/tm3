@@ -20,7 +20,7 @@ QList<std::pair<QString,QString>> CatReportHelper::getRootCatReport(QString root
             sql.append(QString::number(id)).append(",");
         }
 
-        sql.chop(1); // Отстригли последнюю запятую.
+		sql.chop(1);
 
         sql.append(
                     ") and a.time>=:dt1 and a.time<=:dt2 group by a.cat_id order by sm desc");
@@ -59,7 +59,6 @@ QString CatReportHelper::getTotalTime() const {
     return timeFromMins(total) + " ("  + QString::number(pc) +  "%)";
 }
 
-// считаем время для категории и её подкатегорий
 long CatReportHelper::getTotalTime(QString catName) const {
     int rId = rootId(catName);
 

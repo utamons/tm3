@@ -89,17 +89,17 @@ void SimpleReportDlg::makeReport() {
         BudjetReportHelper bHelper(pHelper);
         auto catRep = bHelper.getCatBudjetReport();
 		if (catRep.length() > 0) {
-			rHelper.appendValueTable(tr("Бюджеты по категориям"),catRep);
+			rHelper.appendValueTable(tr("Bedgets by categories"),catRep);
 		}
 
         auto rateRep = bHelper.getRateBudjetReport();
 		if (rateRep.length() > 0) {
-			rHelper.appendValueTable(tr("Бюджеты по оценкам"),rateRep);
+			rHelper.appendValueTable(tr("Budgets by rates"),rateRep);
 		}
 
         auto tagRep = bHelper.getTagBudjetReport();
 		if (tagRep.length() > 0) {
-			rHelper.appendValueTable(tr("Бюджеты по меткам"),tagRep);
+			rHelper.appendValueTable(tr("Budgets by tags"),tagRep);
 		}
 
 	} else if (radRate->isChecked()) {

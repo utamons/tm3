@@ -8,7 +8,7 @@
 UnitListDlg::UnitListDlg(QWidget *parent) :  QDialog(parent)
 {
     setupUi(this);
-    this->setWindowTitle(tr("Единицы"));
+	this->setWindowTitle(tr("Units"));
     unitList->setModel(&model);
     unitList->setSelectionMode(QAbstractItemView::SingleSelection);
     selectRow(0);
@@ -28,7 +28,7 @@ void UnitListDlg::delUnit() {
     if (idx.isValid()) {
         int row = idx.row();
         if (model.remove(idx) == FOREIGN_KEY_FAIL)
-            QMessageBox::critical(this,tr("Ошибка"),tr("Данная единица используется в системе, удалить её нельзя!"));
+			QMessageBox::critical(this,tr("Error"),tr("This unit is in use!"));
         else
             selectRow(row==model.rowCount(QModelIndex())?row-1:row);
     }

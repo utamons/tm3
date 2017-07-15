@@ -37,9 +37,9 @@ void RateUpdateDlg::accept() {
     rate.unit = unit;
 
     if (rate.name.length() == 0) {
-        QMessageBox::warning(this,tr("Ошибка"),tr("Необходимо ввести название!"));
+			QMessageBox::warning(this,tr("Error"),tr("Enter name!"));
     } else if ( ! isDBUnique<RateListModel,Rate>(rate)) {
-        QMessageBox::warning(this,tr("Ошибка"),tr("Такая оценка уже есть в справочнике!"));
+			QMessageBox::warning(this,tr("Error"),tr("The rate already exists"));
     } else {
         QDialog::accept();
     }

@@ -22,7 +22,6 @@ public:
             delete zombies.takeFirst();
     }
 
-    /* Переопределённые методы */
 
     QVariant data(const QModelIndex &index, int role) const override;
 
@@ -46,9 +45,6 @@ public:
     QStringList mimeTypes() const override;
 
     Qt::DropActions supportedDropActions() const override {return Qt::MoveAction;}
-
-    /* Управление деревом */
-
 
 
     int addNode(Category cat, const QModelIndex& index);
