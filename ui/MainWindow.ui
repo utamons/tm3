@@ -178,6 +178,12 @@
              </item>
              <item>
               <widget class="QDateEdit" name="dateEdit">
+               <property name="font">
+                <font>
+                 <family>Tahoma</family>
+                 <pointsize>15</pointsize>
+                </font>
+               </property>
                <property name="calendarPopup">
                 <bool>true</bool>
                </property>
@@ -231,6 +237,12 @@
               <height>16777215</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Tahoma</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -260,6 +272,12 @@
        </item>
        <item>
         <widget class="QTableView" name="tableActs">
+         <property name="font">
+          <font>
+           <family>Tahoma</family>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
@@ -425,7 +443,10 @@
      <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
    </property>
    <property name="text">
-    <string>Insert event</string>
+    <string>Add action</string>
+   </property>
+   <property name="toolTip">
+    <string>New Action</string>
    </property>
    <property name="shortcut">
     <string>Ins</string>
