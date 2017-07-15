@@ -66,12 +66,12 @@
           </property>
           <property name="icon">
            <iconset resource="../TM3res.qrc">
-            <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
+            <normaloff>:/images/new/check-mark.png</normaloff>:/images/new/check-mark.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>24</width>
+            <height>24</height>
            </size>
           </property>
          </widget>
@@ -89,12 +89,12 @@
           </property>
           <property name="icon">
            <iconset resource="../TM3res.qrc">
-            <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
+            <normaloff>:/images/new/cross.png</normaloff>:/images/new/cross.png</iconset>
           </property>
           <property name="iconSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>24</width>
+            <height>24</height>
            </size>
           </property>
          </widget>

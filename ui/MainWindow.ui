@@ -20,7 +20,7 @@
    <string>TM3</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../TM3res.qrc">
+   <iconset>
     <normaloff>:/images/clock_red48.png</normaloff>:/images/clock_red48.png</iconset>
   </property>
   <property name="iconSize">
@@ -102,8 +102,20 @@
           </property>
           <item>
            <widget class="QToolButton" name="btnAdd">
+            <property name="autoFillBackground">
+             <bool>true</bool>
+            </property>
             <property name="text">
              <string>...</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="autoRaise">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -112,12 +124,24 @@
             <property name="text">
              <string>...</string>
             </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item>
            <widget class="QToolButton" name="btnDel">
             <property name="text">
              <string>...</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -131,6 +155,12 @@
             </property>
             <property name="text">
              <string>...</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -172,7 +202,13 @@
                </property>
                <property name="icon">
                 <iconset resource="../TM3res.qrc">
-                 <normaloff>:/images/Basic_set_Png/left_32.png</normaloff>:/images/Basic_set_Png/left_32.png</iconset>
+                 <normaloff>:/images/new/left-pointing-arrow.png</normaloff>:/images/new/left-pointing-arrow.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -199,7 +235,13 @@
                </property>
                <property name="icon">
                 <iconset resource="../TM3res.qrc">
-                 <normaloff>:/images/calendar_view_day.png</normaloff>:/images/calendar_view_day.png</iconset>
+                 <normaloff>:/images/new/homepage.png</normaloff>:/images/new/homepage.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -210,7 +252,13 @@
                </property>
                <property name="icon">
                 <iconset resource="../TM3res.qrc">
-                 <normaloff>:/images/Basic_set_Png/right_32.png</normaloff>:/images/Basic_set_Png/right_32.png</iconset>
+                 <normaloff>:/images/new/right-arrow.png</normaloff>:/images/new/right-arrow.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -343,7 +391,7 @@
   <action name="actionActNew">
    <property name="icon">
     <iconset resource="../TM3res.qrc">
-     <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
+     <normaloff>:/images/new/check-mark.png</normaloff>:/images/new/check-mark.png</iconset>
    </property>
    <property name="text">
     <string>Add action</string>
@@ -384,7 +432,7 @@
   <action name="actionUpdate">
    <property name="icon">
     <iconset resource="../TM3res.qrc">
-     <normaloff>:/images/edit.png</normaloff>:/images/edit.png</iconset>
+     <normaloff>:/images/new/pencil.png</normaloff>:/images/new/pencil.png</iconset>
    </property>
    <property name="text">
     <string>Update action</string>
@@ -399,7 +447,7 @@
   <action name="actionDel">
    <property name="icon">
     <iconset resource="../TM3res.qrc">
-     <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
+     <normaloff>:/images/new/cross.png</normaloff>:/images/new/cross.png</iconset>
    </property>
    <property name="text">
     <string>Delete action</string>
@@ -414,7 +462,7 @@
   <action name="actionSimpleReport">
    <property name="icon">
     <iconset resource="../TM3res.qrc">
-     <normaloff>:/images/report.png</normaloff>:/images/report.png</iconset>
+     <normaloff>:/images/new/edit-document.png</normaloff>:/images/new/edit-document.png</iconset>
    </property>
    <property name="text">
     <string>Time report</string>
@@ -433,7 +481,7 @@
   </action>
   <action name="actNew2">
    <property name="icon">
-    <iconset resource="../TM3res.qrc">
+    <iconset>
      <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
    </property>
    <property name="text">

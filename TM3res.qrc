@@ -1,25 +1,16 @@
 <RCC>
-  <qresource prefix="/">
-    <file>images/cap.png</file>
-    <file>images/delicious.png</file>
-    <file>images/key_q.png</file>
-    <file>images/date_task.png</file>
-    <file>images/list-add.png</file>
-    <file>images/list-remove.png</file>
-    <file>images/edit.png</file>
-    <file>images/add.png</file>
-    <file>images/Basic_set_Png/calendar_32.png</file>
-    <file>images/Basic_set_Png/left_32.png</file>
-    <file>images/Basic_set_Png/right_32.png</file>
-    <file>images/Basic_set_Png/document_32.png</file>
-    <file>images/Basic_set_Png/search_32.png</file>
-    <file>images/calendar_view_day.png</file>
-    <file>images/calendar_view_month.png</file>
-    <file>images/calendar_view_week.png</file>
-    <file>images/clock_.png</file>
-    <file>images/clock_red.png</file>
-    <file>images/calendar.png</file>
-    <file>images/report.png</file>
-    <file>images/clock_red48.png</file>
-  </qresource>
+    <qresource prefix="/">
+        <file>images/new/check-mark.png</file>
+        <file>images/new/edit-document.png</file>
+        <file>images/new/homepage.png</file>
+        <file>images/new/left-pointing-arrow.png</file>
+        <file>images/new/pencil.png</file>
+        <file>images/new/right-arrow.png</file>
+        <file>images/new/search-magnifier-interface-symbol.png</file>
+        <file>images/new/cross.png</file>
+        <file>images/new/calendar-day-15.png</file>
+        <file>images/new/calendar-with-a-clock-time-tools.png</file>
+        <file>images/new/calendar.png</file>
+        <file>images/new/circular-arrow-clock.png</file>
+    </qresource>
 </RCC>

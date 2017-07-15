@@ -124,7 +124,13 @@
         </property>
         <property name="icon">
          <iconset resource="../TM3res.qrc">
-          <normaloff>:/images/Basic_set_Png/left_32.png</normaloff>:/images/Basic_set_Png/left_32.png</iconset>
+          <normaloff>:/images/new/left-pointing-arrow.png</normaloff>:/images/new/left-pointing-arrow.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -144,7 +150,13 @@
         </property>
         <property name="icon">
          <iconset resource="../TM3res.qrc">
-          <normaloff>:/images/Basic_set_Png/right_32.png</normaloff>:/images/Basic_set_Png/right_32.png</iconset>
+          <normaloff>:/images/new/right-arrow.png</normaloff>:/images/new/right-arrow.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -164,7 +176,13 @@
         </property>
         <property name="icon">
          <iconset resource="../TM3res.qrc">
-          <normaloff>:/images/calendar_view_day.png</normaloff>:/images/calendar_view_day.png</iconset>
+          <normaloff>:/images/new/circular-arrow-clock.png</normaloff>:/images/new/circular-arrow-clock.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -184,7 +202,13 @@
         </property>
         <property name="icon">
          <iconset resource="../TM3res.qrc">
-          <normaloff>:/images/calendar_view_week.png</normaloff>:/images/calendar_view_week.png</iconset>
+          <normaloff>:/images/new/calendar-day-15.png</normaloff>:/images/new/calendar-day-15.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -204,7 +228,13 @@
         </property>
         <property name="icon">
          <iconset resource="../TM3res.qrc">
-          <normaloff>:/images/calendar_view_month.png</normaloff>:/images/calendar_view_month.png</iconset>
+          <normaloff>:/images/new/calendar-with-a-clock-time-tools.png</normaloff>:/images/new/calendar-with-a-clock-time-tools.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -224,7 +254,13 @@
         </property>
         <property name="icon">
          <iconset resource="../TM3res.qrc">
-          <normaloff>:/images/calendar.png</normaloff>:/images/calendar.png</iconset>
+          <normaloff>:/images/new/calendar.png</normaloff>:/images/new/calendar.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
+         </size>
         </property>
        </widget>
       </item>
