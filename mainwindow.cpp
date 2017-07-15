@@ -9,7 +9,6 @@
 #include "actupdatedlg.h"
 #include "simplereportdlg.h"
 #include <QtGlobal>
-#include "budjetlistdlg.h"
 #include "taglistdlg.h"
 #include "periodhelper.h"
 #include "ratereporthelper.h"
@@ -269,11 +268,4 @@ void MainWindow::selectLastRow() {
     tableActs->scrollToBottom();
     tableActs->setFocus();
     tableActs->setCurrentIndex(model.lastIndex(0));
-}
-
-void MainWindow::actBudjetDlg() {
-    BudjetListDlg budjetDlg(this);
-    budjetDlg.setModal(true);
-    budjetDlg.setWindowFlags(Qt::Dialog | Qt::WindowCloseButtonHint);
-    budjetDlg.exec();
 }

@@ -24,15 +24,12 @@ SOURCES += main.cpp\
     tm3util.cpp \
     catabbrevvalidator.cpp \
     dlg/actupdatedlg.cpp \
-    dlg/budjetlistdlg.cpp \
-    dlg/budjetupdatedlg.cpp \
     dlg/cattreedlg.cpp \
     dlg/catupdatedlg.cpp \
     dlg/ratelistdlg.cpp \
     dlg/rateupdatedlg.cpp \
     dlg/ratevalupdatedlg.cpp \
     dlg/simplereportdlg.cpp \
-    helper/budjetreporthelper.cpp \
     helper/catreporthelper.cpp \
     helper/dbhelper.cpp \
     helper/periodhelper.cpp \
@@ -40,7 +37,6 @@ SOURCES += main.cpp\
     helper/reporthelper.cpp \
     helper/tagreporthelper.cpp \
     model/activitytablemodel.cpp \
-    model/budjettablemodel.cpp \
     model/cattreemodel.cpp \
     model/ratelistmodel.cpp \
     model/ratevaltablemodel.cpp \
@@ -59,8 +55,6 @@ HEADERS  += mainwindow.h \
     catabbrevvalidator.h \
     model/activitytablemodel.h \
     dlg/actupdatedlg.h \
-    dlg/budjetlistdlg.h \
-    dlg/budjetupdatedlg.h \
     dlg/cattreedlg.h \
     dlg/catupdatedlg.h \
     dlg/ratelistdlg.h \
@@ -68,19 +62,16 @@ HEADERS  += mainwindow.h \
     dlg/ratevalupdatedlg.h \
     dlg/simplereportdlg.h \
     entity/activity.h \
-    entity/budjet.h \
     entity/category.h \
     entity/rate.h \
     entity/rateval.h \
     entity/unit.h \
-    helper/budjetreporthelper.h \
     helper/catreporthelper.h \
     helper/dbhelper.h \
     helper/periodhelper.h \
     helper/ratereporthelper.h \
     helper/reporthelper.h \
     helper/tagreporthelper.h \
-    model/budjettablemodel.h \
     model/cattreemodel.h \
     model/ratelistmodel.h \
     model/ratevaltablemodel.h \
@@ -106,8 +97,6 @@ QT += sql
 
 FORMS    += \
     ui/ActUpdateDlg.ui \
-    ui/BudjetListDlg.ui \
-    ui/BudjetUpdateDlg.ui \
     ui/CatTreeDlg.ui \
     ui/CatUpdateDlg.ui \
     ui/MainWindow.ui \

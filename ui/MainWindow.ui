@@ -312,7 +312,6 @@
     <addaction name="actRates"/>
     <addaction name="actTags"/>
     <addaction name="actCat"/>
-    <addaction name="actBudjets"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -430,11 +429,6 @@
   <action name="actTags">
    <property name="text">
     <string>Tags</string>
-   </property>
-  </action>
-  <action name="actBudjets">
-   <property name="text">
-    <string>Budgets</string>
    </property>
   </action>
   <action name="actNew2">
@@ -686,22 +680,6 @@
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>actTagDlg()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>411</x>
-     <y>283</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actBudjets</sender>
-   <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>actBudjetDlg()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>

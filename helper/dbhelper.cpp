@@ -61,24 +61,6 @@ void DBHelper::createStructure() {
 	        "comment		varchar(255)"
 			")";
 
-	// Budgets
-	const QString budjetSQL = "create table if not exists budjet ("
-	                          "id             integer primary key autoincrement,"
-	        "name           varchar(80) not null,"
-	        "workdays		integer check(workdays>-1 and workdays<2)," // Count workdays only (0-no,1-yes)
-	        "descendant		integer check(descendant>-1 and descendant<2)," // Count descendants (0-no,1-yes)
-	        "illness		integer check(illness>-1 and illness<2)," // Count illness days (0-no,1-yes)
-	        "correction		integer check(correction>-1 and correction<2)," // Need corrections (0-no,1-yes)
-	        "min            integer,"// min limit
-	        "max            integer,"// max limit
-	        "dt_beg			numeric not null,"// Active since (minutes from epoch)
-	        "dt_end			numeric,"         // Inactive since (minutes from epoch)
-	        "period         integer not null check(period>-1 and period<6),"// Budjet period 0-day,1-week,2-month,3-quarter,4-year,5-workday
-	        "cat_id         integer references cat_rb(id),"// Category fk
-	        "rate_id        integer references rate_rb(id),"//Rate fk
-	        "tag_id         integer references tag_rb(id),"// Tag fk
-			"constraint budjet_uk unique (name,dt_beg,dt_end,period)"
-			")";
 
 	// Units
 	const QString unitRbSQL = "create table if not exists unit_rb ("
@@ -142,7 +124,6 @@ void DBHelper::createStructure() {
 	execQuery(actionsSQL);
 	execQuery(actRateLinkSQL);
 	execQuery(actTagLinkSQL);
-	execQuery(budjetSQL);
     execQuery(tagRbSQL);
 	execQuery(catTagLinkSQL);
 }

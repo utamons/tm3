@@ -6,7 +6,6 @@
 #include "tm3util.h"
 #include "periodhelper.h"
 #include "reporthelper.h"
-#include "budjettablemodel.h"
 #include <memory>
 
 class SimpleReportDlg: public QDialog, private Ui_SimpleReportDlg {
@@ -53,7 +52,6 @@ public slots:
 	void radCatClicked(bool val);
 	void radRateClicked(bool val);
 	void radTagClicked(bool val);
-	void radBudjetClicked(bool val);
 
 signals:
 

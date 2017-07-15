@@ -5,7 +5,6 @@
 #include "catreporthelper.h"
 #include "tagreporthelper.h"
 #include "ratereporthelper.h"
-#include "budjetreporthelper.h"
 
 SimpleReportDlg::SimpleReportDlg(QWidget *parent) :
 	QDialog(parent) {
@@ -85,23 +84,6 @@ void SimpleReportDlg::makeReport() {
 			rHelper.appendValueTable(tr("Tags"),tagRep);
 		}
 
-	} else if (radBudjet->isChecked()) {
-        BudjetReportHelper bHelper(pHelper);
-        auto catRep = bHelper.getCatBudjetReport();
-		if (catRep.length() > 0) {
-			rHelper.appendValueTable(tr("Bedgets by categories"),catRep);
-		}
-
-        auto rateRep = bHelper.getRateBudjetReport();
-		if (rateRep.length() > 0) {
-			rHelper.appendValueTable(tr("Budgets by rates"),rateRep);
-		}
-
-        auto tagRep = bHelper.getTagBudjetReport();
-		if (tagRep.length() > 0) {
-			rHelper.appendValueTable(tr("Budgets by tags"),tagRep);
-		}
-
 	} else if (radRate->isChecked()) {
 		rHelper.appendHeader(tr("Report of ").append(pHelper->getName()));
 		rHelper.appendParagraph("");
@@ -126,9 +108,5 @@ void SimpleReportDlg::radRateClicked(bool) {
 
 void SimpleReportDlg::radTagClicked(bool) {
 	makeReport();
-}
-
-void SimpleReportDlg::radBudjetClicked(bool) {
-    makeReport();
 }
 
