@@ -50,7 +50,7 @@ void DBHelper::checkDB() {
 // Creating database structure.
 void DBHelper::createStructure() {
 
-	//  Categories refbook
+	//  Categories
 	const QString catTableSQL = "create table if not exists cat_rb ("
 	                            "id             integer primary key autoincrement," // Primary key
 	        "abbrev         char(20) not null unique,"// Abbreviation
@@ -64,75 +64,73 @@ void DBHelper::createStructure() {
 	// Budgets
 	const QString budjetSQL = "create table if not exists budjet ("
 	                          "id             integer primary key autoincrement,"
-			"name           varchar(80) not null,"// Наименование
-			"workdays		integer check(workdays>-1 and workdays<2)," // Учитывать только рабочие дни (0-нет,1-да)
-			"descendant		integer check(descendant>-1 and descendant<2)," // Учитывать потомков (0-нет,1-да)
-			"illness		integer check(illness>-1 and illness<2)," // Учитывать дни болезни (0-нет,1-да)
-			"correction		integer check(correction>-1 and correction<2)," // Требуется ли корректировка (0-нет,1-да)
-			"min            integer,"// Минимальное значение
-			"max            integer,"// Максимальное значение
-			"dt_beg			numeric not null,"// Начало действия(в минутах с epoch)
-			"dt_end			numeric,"         // Конец действия(в минутах с epoch)
-			"period         integer not null check(period>-1 and period<6),"// Период бюджетирования 0-день,1-неделя,2-месяц,3-квартал,4-год,5-рабочий-день
-			"cat_id         integer references cat_rb(id),"// Ссылка на категорию
-			"rate_id        integer references rate_rb(id),"// Ссылка на оценку
-			"tag_id         integer references tag_rb(id),"// Ссылка на метку
+	        "name           varchar(80) not null,"
+	        "workdays		integer check(workdays>-1 and workdays<2)," // Count workdays only (0-no,1-yes)
+	        "descendant		integer check(descendant>-1 and descendant<2)," // Count descendants (0-no,1-yes)
+	        "illness		integer check(illness>-1 and illness<2)," // Count illness days (0-no,1-yes)
+	        "correction		integer check(correction>-1 and correction<2)," // Need corrections (0-no,1-yes)
+	        "min            integer,"// min limit
+	        "max            integer,"// max limit
+	        "dt_beg			numeric not null,"// Active since (minutes from epoch)
+	        "dt_end			numeric,"         // Inactive since (minutes from epoch)
+	        "period         integer not null check(period>-1 and period<6),"// Budjet period 0-day,1-week,2-month,3-quarter,4-year,5-workday
+	        "cat_id         integer references cat_rb(id),"// Category fk
+	        "rate_id        integer references rate_rb(id),"//Rate fk
+	        "tag_id         integer references tag_rb(id),"// Tag fk
 			"constraint budjet_uk unique (name,dt_beg,dt_end,period)"
 			")";
 
-	// Справочник единиц измерения
+	// Units
 	const QString unitRbSQL = "create table if not exists unit_rb ("
-							  "id            integer primary key autoincrement," // Первичный ключ
-			"name          varchar(50) not null unique"// Наименование
+	                          "id            integer primary key autoincrement,"
+	        "name          varchar(50) not null unique"
 			")";
 
-	// Справочник единиц измерения
+	// Tags
 	const QString tagRbSQL = "create table if not exists tag_rb ("
-							 "id            integer primary key autoincrement," // Первичный ключ
-			"name          varchar(50) not null unique"// Наименование
+	                         "id            integer primary key autoincrement,"
+	        "name          varchar(50) not null unique"
 			")";
 
-	// Связь событий и меток
+
 	const QString actTagLinkSQL = "create table if not exists act_tag_link ("
 								  "act_id        integer references actions (id) not null,"
 								  "tag_id        integer references tag_rb (id) not null,"
 								  "constraint    act_tag_link_pk primary key (act_id,tag_id))";
 
-	// Связь категорий и меток по умолчанию
     const QString catTagLinkSQL = "create table if not exists cat_tag_link ("
 								  "cat_id        integer references cat_rb (id) not null,"
 								  "tag_id        integer references tag_rb (id) not null,"
 								  "constraint    cat_tag_link_pk primary key (cat_id,tag_id))";
 
-	// Справочник оценок
+	// Rates
 	const QString rateRbTableSQL = "create table if not exists rate_rb ("
-								   "id            integer primary key autoincrement," // Первичный ключ
-			"name          varchar(80) not null unique,"// Наименование
-			"time          integer,"// Время
-			"comment	   varchar(255),"// Комментарий
-			"unit_id       integer references unit_rb (id)"// Ссылка на ед. изм.
+	                               "id            integer primary key autoincrement,"
+	        "name          varchar(80) not null unique,"
+	        "time          integer,"
+	        "comment	   varchar(255),"
+	        "unit_id       integer references unit_rb (id)"
 			")";
 
-	// Связь категорий и оценок (многие ко многим)
 	const QString catsRatesLinkSQL = "create table if not exists cat_rate_link ("
-									 "cat_id         integer references cat_rb (id) not null," // Ссылка на категорию
-			"rate_id        integer references rate_rb (id) not null,"// Ссылка на оценку
-			"default_value  number not null, "// Значение по умолчанию
+	                                 "cat_id         integer references cat_rb (id) not null,"
+	        "rate_id        integer references rate_rb (id) not null,"
+	        "default_value  number not null, "
 			"constraint cat_rate_link_pk primary key (cat_id,rate_id))";
 
-	// Журнал событий
+	// Actions
 	const QString actionsSQL = "create table if not exists actions ("
-							   "id             integer primary key autoincrement," // Первичный ключ
-			"time           numeric not null, "// Время начала в минутах с epoch
-			"cat_id         integer references cat_rb (id) not null,"// Категория
-			"mins           integer not null,"// Длительность в минутах
-			"comment        varchar(1024)"// Комментарий
+	                           "id             integer primary key autoincrement,"
+	        "time           numeric not null, "// Start time
+	        "cat_id         integer references cat_rb (id) not null,"
+	        "mins           integer not null,"// Duration
+	        "comment        varchar(1024)"
 			")";
 
-	// Связь событий и оценок
+
 	const QString actRateLinkSQL = "CREATE TABLE  if not exists act_rate_link ("
-								   "act_id  integer references actions (id) not null," // Ссылка на событие
-			"rate_id integer references rate_rb (id) not null,"// Ссылка на оценку
+	                               "act_id  integer references actions (id) not null,"
+	        "rate_id integer references rate_rb (id) not null,"
 			"value   number not null, "
 			"constraint act_rate_link_pk primary key (act_id,rate_id)"
 			")";
@@ -149,7 +147,7 @@ void DBHelper::createStructure() {
 	execQuery(catTagLinkSQL);
 }
 
-// Запрос, не возвращающий результатов
+
 SqlQueryStatus execQuery(const QString query, bool checkForeignKey) {
 	QSqlQuery q;
 	if (!q.exec(query)) {
@@ -164,7 +162,7 @@ SqlQueryStatus execQuery(const QString query, bool checkForeignKey) {
 	return SQL_OK;
 }
 
-// Выполнение подготовленного запроса
+
 SqlQueryStatus execQuery(QSqlQuery q, bool checkForeignKey) {
 	if (!q.exec()) {
 		if (checkForeignKey && q.lastError().databaseText() == "FOREIGN KEY constraint failed") {
@@ -182,7 +180,7 @@ QSqlDatabase getDb() {
 	return DBHelper::getInstance()->db;
 }
 
-// Выполнение функции для каждой записи
+
 void execQuery(QSqlQuery q, std::function<void()> f) {
 	if (q.exec()) {
 		while (q.next()) {

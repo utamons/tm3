@@ -47,10 +47,10 @@ double RateReportHelper::calculateRate(QSqlQuery q) {
 
 	double result = 0.0;
 
-	if (rtime > 0 && mins > 0) { // если оценка рассчитывается по времени
+	if (rtime > 0 && mins > 0) { // if this is time based rate
 		result = val*(mins/rtime);
 	} else if (rtime == 0) {
-		result = val; // если это оценка не привязанная ко времени
+		result = val;
 	}
 
 	return result;

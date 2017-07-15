@@ -223,10 +223,10 @@
      <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
    </property>
    <property name="text">
-    <string>Добавить</string>
+    <string>Add</string>
    </property>
    <property name="toolTip">
-    <string>Добавить (Ins)</string>
+    <string>Add (Ins)</string>
    </property>
    <property name="shortcut">
     <string>Ins</string>
@@ -238,10 +238,10 @@
      <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
    </property>
    <property name="text">
-    <string>Удалить</string>
+    <string>Delete</string>
    </property>
    <property name="toolTip">
-    <string>Удалить (Del)</string>
+    <string>Delete (Del)</string>
    </property>
    <property name="shortcut">
     <string>Del</string>
@@ -253,10 +253,10 @@
      <normaloff>:/images/edit.png</normaloff>:/images/edit.png</iconset>
    </property>
    <property name="text">
-    <string>Изменить</string>
+    <string>Update</string>
    </property>
    <property name="toolTip">
-    <string>Изменить</string>
+    <string>Update</string>
    </property>
   </action>
   <action name="actionAdd2Root">
@@ -265,10 +265,10 @@
      <normaloff>:/images/add.png</normaloff>:/images/add.png</iconset>
    </property>
    <property name="text">
-    <string>Добавить в корень</string>
+    <string>Add to root</string>
    </property>
    <property name="toolTip">
-    <string>Добавить в корень (Ctrl+Ins)</string>
+    <string>Add to root (Ctrl+Ins)</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Ins</string>

@@ -272,7 +272,7 @@
               <string>...</string>
              </property>
              <property name="icon">
-              <iconset resource="TM3res.qrc">
+              <iconset resource="../TM3res.qrc">
                <normaloff>:/images/Basic_set_Png/search_32.png</normaloff>:/images/Basic_set_Png/search_32.png</iconset>
              </property>
             </widget>
@@ -332,7 +332,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="TM3res.qrc"/>
+  <include location="../TM3res.qrc"/>
  </resources>
  <connections>
   <connection>

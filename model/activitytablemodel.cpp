@@ -127,11 +127,11 @@ SqlQueryStatus ActivityTableModel::remove(const QModelIndex &row) {
 
         execQuery(q);
 
-        // Проверим - не является ли событие разбитым по границам суток.
+		// Is the action divided by days border
         QDateTime nextDt = act.time.addSecs(act.mins * 60);
         if (nextDt.time().hour() == 0 && nextDt.time().minute() == 0) {
             QTime time(0, 0, 0, 0);
-            nextDt.setTime(time); // обнулим секунды
+			nextDt.setTime(time); // set seconds to zero
             q.prepare("select id,cat_id from actions where time=:time");
             q.bindValue(":time", toEpochMins(nextDt));
             execQuery(q, [act,q]() {
@@ -191,10 +191,7 @@ bool ActivityTableModel::isCrossTime(QDateTime beginTime, int mins, int selfId) 
     bool result = false;
     QSqlQuery q(getDb());
 
-    /*
-     * начало суток может пересекаться с концом предыдущих.
-     * поэтому обрежем его с начала на одну минуту:
-     */
+
     if (beginTime.time().hour() == 0 && beginTime.time().minute() == 0) {
         beginTime = beginTime.addSecs(60);
         --mins;
@@ -216,7 +213,7 @@ bool ActivityTableModel::isCrossTime(QDateTime beginTime, int mins, int selfId) 
     return result;
 }
 
-// Возвращает время сразу после последнего события в журнале.
+// Time after last action.
 QDateTime ActivityTableModel::getLastTime() {
     QSqlQuery q(getDb());
     q.prepare("select max(time) as m from actions");

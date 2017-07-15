@@ -312,7 +312,7 @@
     <string>Exit</string>
    </property>
    <property name="toolTip">
-    <string>Выход из программы</string>
+    <string>Exit to desktop</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+W</string>
@@ -329,10 +329,10 @@
      <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
    </property>
    <property name="text">
-    <string>Добавить событие</string>
+    <string>Add action</string>
    </property>
    <property name="toolTip">
-    <string>Новое событие</string>
+    <string>New action</string>
    </property>
    <property name="shortcut">
     <string>Del</string>
@@ -340,10 +340,10 @@
   </action>
   <action name="actToggleToolBar">
    <property name="text">
-    <string>Скрыть тулбар</string>
+    <string>Hide toolbar</string>
    </property>
    <property name="toolTip">
-    <string>Скрыть тулбар</string>
+    <string>Hide toolbar</string>
    </property>
    <property name="shortcut">
     <string>Alt+T</string>
@@ -370,10 +370,10 @@
      <normaloff>:/images/edit.png</normaloff>:/images/edit.png</iconset>
    </property>
    <property name="text">
-    <string>Изменить событие</string>
+    <string>Update action</string>
    </property>
    <property name="toolTip">
-    <string>Изменить</string>
+    <string>Update</string>
    </property>
    <property name="shortcut">
     <string>Return</string>
@@ -385,10 +385,10 @@
      <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
    </property>
    <property name="text">
-    <string>Удалить событие</string>
+    <string>Delete action</string>
    </property>
    <property name="toolTip">
-    <string>Удалить событие</string>
+    <string>Delete action</string>
    </property>
    <property name="shortcut">
     <string>Alt+Del</string>
@@ -400,10 +400,10 @@
      <normaloff>:/images/report.png</normaloff>:/images/report.png</iconset>
    </property>
    <property name="text">
-    <string>Расходы времени</string>
+    <string>Time report</string>
    </property>
    <property name="toolTip">
-    <string>Расходы времени</string>
+    <string>Time report</string>
    </property>
    <property name="shortcut">
     <string>R</string>

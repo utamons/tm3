@@ -47,7 +47,7 @@ QStringList CatTreeModel::mimeTypes() const {
     return types;
 }
 
-// Собственно перемещение категории из одной в другую.
+
 bool CatTreeModel::moveCat(TreeNode<Category> *movedCat, const QModelIndex& parentIdx) {
     int childCount = rowCount(parentIdx);
     auto movedTo = nodeFromIndex(parentIdx);
@@ -86,11 +86,11 @@ bool CatTreeModel::dropMimeData(const QMimeData *data, Qt::DropAction action, in
             result =  moveCat(movedCat, parentIdx);
         } else {
             QMessageBox msgBox;
-            msgBox.setWindowTitle(tr("Перемещение или слияние?"));
-            msgBox.setText(tr("Вы хотите переместить или слить категории?"));
-            auto moveButton = msgBox.addButton(tr("Переместить"), QMessageBox::ActionRole);
-            auto joinButton = msgBox.addButton(tr("Слить"), QMessageBox::ActionRole);
-            msgBox.addButton(tr("Отмена"), QMessageBox::ActionRole);
+			msgBox.setWindowTitle(tr("Move or join?"));
+			msgBox.setText(tr("Do you want to move or join categories?"));
+			auto moveButton = msgBox.addButton(tr("Move"), QMessageBox::ActionRole);
+			auto joinButton = msgBox.addButton(tr("Join"), QMessageBox::ActionRole);
+			msgBox.addButton(tr("Cancel"), QMessageBox::ActionRole);
 
             msgBox.exec();
 
@@ -178,7 +178,7 @@ QModelIndex CatTreeModel::deleteNode(const QModelIndex &index) {
     QModelIndex result;
 
     if (node->hasChildren()) {
-        QMessageBox::critical(nullptr, tr("Ошибка"), tr("Нельзя удалить ветку целиком!"));
+			QMessageBox::critical(nullptr, tr("Error"), tr("Cannot delete this branch!"));
     } else {
 
         int row = node->row();
@@ -218,7 +218,7 @@ QModelIndex CatTreeModel::deleteNode(const QModelIndex &index) {
         } else {
             rollback();
             if (status == FOREIGN_KEY_FAIL)
-                QMessageBox::critical(nullptr, tr("Ошибка"), tr("В журнале есть события этой категории, удалить её нельзя!"));
+				QMessageBox::critical(nullptr, tr("Error"), tr("Category is in use!"));
         }
     }
     return result;
@@ -382,8 +382,8 @@ void CatTreeModel::fillData(Category &cat) {
 bool CatTreeModel::scaryQuestion(Category movedCat, Category movedTo) {
     QMessageBox msgBox;
 
-    msgBox.addButton(tr("Мне страшно, уходим отсюда!"), QMessageBox::ActionRole);
-    QPushButton *yes = msgBox.addButton(tr("Фигня, сливаем!"), QMessageBox::ActionRole);
+	msgBox.addButton(tr("I'm scared, get out from here!"), QMessageBox::ActionRole);
+	QPushButton *yes = msgBox.addButton(tr("Nevermind, join!"), QMessageBox::ActionRole);
 
     QString redB = "<span style=\" color:#ff0000;\">";
     QString redE = "</span>";
@@ -391,13 +391,13 @@ bool CatTreeModel::scaryQuestion(Category movedCat, Category movedTo) {
     QString movedToName = redB + movedTo.name + redE;
 
     QString msg = "<div style=\"width:400px \">" +
-            tr("<b><center>ВНИМАНИЕ!</center><p>") +
-            tr("Вы собираетесь слить ") + movedToName +
-            tr(" и ") +  movedName + "</p><p>" +
-            tr("Все события из ") + movedName + tr(" переместятся в ") +
+	        tr("<b><center>ATTENTION!</center><p>") +
+	        tr("You're going to join ") + movedToName +
+	        tr(" and ") +  movedName + "</p><p>" +
+	        tr("All actions from ") + movedName + tr(" will move to ") +
             movedToName + "!</p><p>" +
-            movedName + tr(" будет удалена!</p><p>") +
-            tr("Эти изменения необратимы! Ничего нельзя будет вернуть назад! Вам страшно?</p></b><br/>") +  "</div>";
+	        movedName + tr(" will be removed!</p><p>") +
+	        tr("You cannot roll back these changes! Are you scared?</p></b><br/>") +  "</div>";
 
     msgBox.setWindowTitle(" ");
     msgBox.setText(msg);
@@ -411,24 +411,24 @@ void CatTreeModel::joinCat(TreeNode<Category> *movedCat, const QModelIndex& pare
     QSqlQuery q(getDb());
     beginTransaction();
 
-    // Меняем удаляемую категорию у всех событий на новую
+	// Change deleted category to new one
     q.prepare("update actions set cat_id=:parent_id where cat_id=:id");
     q.bindValue(":parent_id", movedTo->getId());
     q.bindValue(":id", movedCat->getId());
     execQuery(q);
 
-    // Передаем детей категории новому родителю
+	// Move childs to new parent
     q.prepare("update cat_rb set parent_id=:parent_id where parent_id=:id");
     q.bindValue(":parent_id", movedTo->getId());
     q.bindValue(":id", movedCat->getId());
     execQuery(q);
 
-    // Удаляем все оценки по умолчанию для удаляемой категории
+	// Remove all default rates for deleted category
     q.prepare("delete from cat_rate_link where cat_id=:catid");
     q.bindValue(":catid", movedCat->getId());
     execQuery(q);
 
-    // Удаляем саму категорию
+	// Remove category
     q.prepare("delete from cat_rb where id=:catid");
     q.bindValue(":catid", movedCat->getId());
     execQuery(q);

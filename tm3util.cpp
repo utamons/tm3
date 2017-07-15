@@ -7,7 +7,6 @@
 #include <QApplication>
 #include <QMessageBox>
 
-// проверяет наличие рабочего каталога. Если его нет - пытается создать.
 bool checkWorkDir() {
 	bool result = true;
 
@@ -41,14 +40,12 @@ QDate toDate(quint64 epochMins) {
 	return QDateTime::fromMSecsSinceEpoch(epochMins * 60000L).date();
 }
 
-// получаем путь к рабочему каталогу
 QString getWorkPath() {
 	QString homePath = "/Users/oleg/Documents";
 	QString wdPath = homePath.append("/db");
 	return QDir::toNativeSeparators(wdPath);
 }
 
-// сохраняет в пропертях позицию и размеры окна с указанным именем
 void saveWinPos(QString winName, QPoint pos, QSize size) {
 	QSettings settings("TM3", "TM3");
 	QString sizePrefix = "size";
@@ -57,21 +54,18 @@ void saveWinPos(QString winName, QPoint pos, QSize size) {
 	settings.setValue(sizePrefix.append(winName), size);
 }
 
-// восстанавливает позицию окна из пропертей
 QPoint restoreWinPos(QString winName) {
 	QSettings settings("TM3", "TM3");
 	QString posPrefix = "pos";
 	return settings.value(posPrefix.append(winName), QPoint(200, 200)).toPoint();
 }
 
-// восстанавливает размер окна из пропертей
 QSize restoreWinSize(QString winName) {
 	QSettings settings("TM3", "TM3");
 	QString sizePrefix = "size";
 	return settings.value(sizePrefix.append(winName), QPoint(200, 200)).toSize();
 }
 
-// даёт строчку годов копирайта
 QString getCopyrightYears() {
 	QString str = QString::number(START_DEV_YEAR);
 	QDate qDate = QDate::currentDate();
@@ -81,7 +75,6 @@ QString getCopyrightYears() {
 	return str;
 }
 
-// превращает минуты в часы и минуты
 QString timeFromMins(int mins) {
 	QString result = "";
 	int m = mins % 60;
@@ -104,13 +97,11 @@ QString timeFromMins(int mins) {
 	return result;
 }
 
-// Округляет время до ближайших 5 минут.
 QDateTime roundTime(QDateTime dt) {
 	int add = dt.time().minute() % 5;
 	return add > 2 ? dt.addSecs((5 - add) * 60) : dt.addSecs(-1 * add * 60);
 }
 
-// Округляет минуты до ближайших пяти.
 int roundMins(int mins) {
 	int add = mins % 5;
 	return add > 2 ? mins + (5 - add) : mins - add;

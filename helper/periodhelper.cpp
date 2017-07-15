@@ -144,40 +144,40 @@ QString PeriodHelper::getMonthName(QDate dt) {
 	QString result;
 	switch (dt.month()) {
 	case 1:
-		result = tr("январь");
+		result = tr("January");
 		break;
 	case 2:
-		result = tr("февраль");
+		result = tr("February");
 		break;
 	case 3:
-		result = tr("март");
+		result = tr("March");
 		break;
 	case 4:
-		result = tr("апрель");
+		result = tr("April");
 		break;
 	case 5:
-		result = tr("май");
+		result = tr("May");
 		break;
 	case 6:
-		result = tr("июнь");
+		result = tr("June");
 		break;
 	case 7:
-		result = tr("июль");
+		result = tr("July");
 		break;
 	case 8:
-		result = tr("август");
+		result = tr("August");
 		break;
 	case 9:
-		result = tr("сентябрь");
+		result = tr("September");
 		break;
 	case 10:
-		result = tr("октябрь");
+		result = tr("October");
 		break;
 	case 11:
-		result = tr("ноябрь");
+		result = tr("November");
 		break;
 	case 12:
-		result = tr("декабрь");
+		result = tr("December");
 		break;
 	}
 	return result;

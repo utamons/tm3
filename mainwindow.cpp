@@ -15,7 +15,6 @@
 #include "ratereporthelper.h"
 #include <memory>
 
-// Размеры колонок таблицы в процентах:
 #define COL1_PC_SIZE 15
 #define COL2_PC_SIZE 15
 #define COL3_PC_SIZE 30
@@ -44,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
                              "}");
     tableActs->horizontalHeader()->setStretchLastSection(true);
     tableActs->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-    tableActs->horizontalHeader()->setStyleSheet("text-align: left"); // прикольно но без этого не работает предыдущий стиль
+	tableActs->horizontalHeader()->setStyleSheet("text-align: left");
     tableActs->verticalHeader()->setVisible(false);
     tableActs->setSelectionBehavior(QAbstractItemView::SelectRows);
 
@@ -77,11 +76,6 @@ void MainWindow::actUnitsDlg() {
     UnitListDlg unitDlg;
 
     unitDlg.setModal(true);
-    /*
-     Почему-то никак не мог найти комбинацию флагов, которая
-     отключает лишние значки в KDE. Может с Windows оно работает.
-     Ниженайденная комбинация хотя бы убирает значок "?"
-     */
     unitDlg.setWindowFlags(Qt::Dialog | Qt::WindowCloseButtonHint);
     unitDlg.exec();
 }

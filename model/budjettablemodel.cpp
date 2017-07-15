@@ -204,16 +204,16 @@ QVariant BudjetTableModel::headerData(int section, Qt::Orientation, int role) co
 	if (role == Qt::DisplayRole) {
 		switch (section) {
 		case 0:
-			result = QVariant(tr("Название"));
+			result = QVariant(tr("Name"));
 			break;
 		case 1:
-			result = QVariant(tr("Период"));
+			result = QVariant(tr("Period"));
 			break;
 		case 2:
-			result = QVariant(tr("Дата"));
+			result = QVariant(tr("Date"));
 			break;
 		case 3:
-			result = QVariant(tr("Тип"));
+			result = QVariant(tr("Type"));
 			break;
 		}
 	}
@@ -311,22 +311,22 @@ QString BudjetTableModel::period2QString(const BudjetPeriod bp) {
 	QString result;
 	switch (bp) {
 	case DAY:
-		result = tr("день");
+		result = tr("day");
 		break;
 	case MONTH:
-		result = tr("месяц");
+		result = tr("month");
 		break;
 	case QUARTER:
-		result = tr("квартал");
+		result = tr("quarter");
 		break;
 	case WEEK:
-		result = tr("неделя");
+		result = tr("week");
 		break;
 	case YEAR:
-		result = tr("год");
+		result = tr("year");
 		break;
 	case WORKDAY:
-		result = tr("раб.день");
+		result = tr("workday");
 		break;
 	}
 	return result;
