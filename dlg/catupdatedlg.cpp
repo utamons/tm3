@@ -19,18 +19,8 @@ CatUpdateDlg::CatUpdateDlg(Category cat, QWidget *parent) :
 
     this->cat = cat;
     tableRate->setModel(&rateModel);
-    tableRate->setStyleSheet("QHeaderView::section {"
-                             "background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,"
-                             "stop:0 #616161, stop: 0.5 #505050,"
-                             "stop: 0.6 #434343, stop:1 #656565);"
-                             "color: white;"
-                             "padding-left: 4px;"
-                             "border: 1px solid #6c6c6c;"
-                             "text-align:left;"
-                             "}");
     tableRate->horizontalHeader()->setStretchLastSection(true);
     tableRate->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-	tableRate->horizontalHeader()->setStyleSheet("text-align: left");
     tableRate->verticalHeader()->setVisible(false);
     tableRate->setSelectionBehavior(QAbstractItemView::SelectRows);
 
