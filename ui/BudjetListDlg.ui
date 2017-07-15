@@ -40,7 +40,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
           </property>
           <property name="iconSize">
@@ -60,7 +60,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/list-remove.png</normaloff>:/images/list-remove.png</iconset>
           </property>
           <property name="iconSize">
@@ -80,7 +80,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/calendar_view_day.png</normaloff>:/images/calendar_view_day.png</iconset>
           </property>
           <property name="iconSize">
@@ -100,7 +100,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/calendar_view_week.png</normaloff>:/images/calendar_view_week.png</iconset>
           </property>
           <property name="iconSize">
@@ -120,7 +120,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/calendar_view_month.png</normaloff>:/images/calendar_view_month.png</iconset>
           </property>
           <property name="iconSize">
@@ -140,7 +140,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/key_q.png</normaloff>:/images/key_q.png</iconset>
           </property>
           <property name="iconSize">
@@ -160,7 +160,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/calendar.png</normaloff>:/images/calendar.png</iconset>
           </property>
           <property name="iconSize">
@@ -180,7 +180,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/date_task.png</normaloff>:/images/date_task.png</iconset>
           </property>
           <property name="iconSize">
@@ -200,7 +200,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="TM3res.qrc">
+           <iconset resource="../TM3res.qrc">
             <normaloff>:/images/cap.png</normaloff>:/images/cap.png</iconset>
           </property>
           <property name="iconSize">
@@ -275,7 +275,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="TM3res.qrc"/>
+  <include location="../TM3res.qrc"/>
  </resources>
  <connections>
   <connection>

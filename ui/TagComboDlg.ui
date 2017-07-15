@@ -27,10 +27,23 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QComboBox" name="comboTag"/>
+    <widget class="QComboBox" name="comboTag">
+     <property name="font">
+      <font>
+       <family>Tahoma</family>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="font">
+      <font>
+       <family>Tahoma</family>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>

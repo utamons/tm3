@@ -28,6 +28,12 @@
        <height>230</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <family>Tahoma</family>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -55,43 +61,95 @@
       </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Name:</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="editName"/>
+       <widget class="QLineEdit" name="editName">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Rate:</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QComboBox" name="comboUnits"/>
+       <widget class="QComboBox" name="comboUnits">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Time:</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QTimeEdit" name="editTime"/>
+       <widget class="QTimeEdit" name="editTime">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Comment:</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QTextEdit" name="editComment"/>
+       <widget class="QTextEdit" name="editComment">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -103,6 +161,12 @@
        <width>0</width>
        <height>56</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Tahoma</family>
+       <pointsize>15</pointsize>
+      </font>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
