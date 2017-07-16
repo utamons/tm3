@@ -59,8 +59,6 @@ signals:
 
 private:
 
-	QList<QString> rootCatList;
-
     std::shared_ptr<PeriodHelper> pHelper;
 	ReportHelper rHelper;
 

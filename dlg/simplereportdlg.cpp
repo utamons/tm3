@@ -19,12 +19,6 @@ SimpleReportDlg::SimpleReportDlg(QWidget *parent) :
 	dtSecond->calendarWidget()->setFirstDayOfWeek(Qt::Monday);
     connect(pHelper.get(), SIGNAL(makeReport()), this, SLOT(makeReport()));
     connect(this,SIGNAL(dead()),pHelper.get(),SLOT(parentDead()));
-
-
-	rootCatList.append(tr("A"));
-	rootCatList.append(tr("B"));
-	rootCatList.append(tr("C"));
-
 }
 
 void SimpleReportDlg::firstDateChanged() {
@@ -71,7 +65,7 @@ void SimpleReportDlg::makeReport() {
 						timeFromMins(pHelper->periodMins())));
 		rHelper.appendParagraph(tr("Measured: ").append(cHelper.getTotalTime()));
 
-        for(QString cat : rootCatList){
+		for(QString cat : cHelper.getRootCatList()){
             rHelper.appendValueTable(cat,cHelper.getRootCatReport(cat));
 		}
 
