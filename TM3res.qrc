@@ -12,5 +12,8 @@
         <file>images/new/calendar-with-a-clock-time-tools.png</file>
         <file>images/new/calendar.png</file>
         <file>images/new/circular-arrow-clock.png</file>
+        <file>images/new/clock-2.png</file>
+        <file>images/new/clock.png</file>
+        <file>icons.icns</file>
     </qresource>
 </RCC>

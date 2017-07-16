@@ -1,5 +1,7 @@
 QT       += widgets
 
+macx:ICON = $${PWD}/icons.icns
+
 #QMAKE_CXXFLAGS += -std=c++11
 
 LIBS += -stdlib=libc++

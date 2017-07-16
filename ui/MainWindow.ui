@@ -20,8 +20,8 @@
    <string>TM3</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/images/clock_red48.png</normaloff>:/images/clock_red48.png</iconset>
+   <iconset resource="../TM3res.qrc">
+    <normaloff>:/icons.icns</normaloff>:/icons.icns</iconset>
   </property>
   <property name="iconSize">
    <size>

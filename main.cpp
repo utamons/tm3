@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
 		if (checkLock(lockFile)) {
 			DBHelper *db = DBHelper::getInstance();
 			MainWindow mainWin;
+			app.setWindowIcon(QIcon(":/icons.icns"));
 			mainWin.show();
 
 			retcode = app.exec();
