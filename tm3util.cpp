@@ -41,7 +41,7 @@ QDate toDate(quint64 epochMins) {
 }
 
 QString getWorkPath() {
-	QString homePath = "/Users/oleg/Documents";
+	QString homePath = "/Users/oleg/Dropbox";
 	QString wdPath = homePath.append("/db");
 	return QDir::toNativeSeparators(wdPath);
 }

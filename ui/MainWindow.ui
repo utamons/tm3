@@ -406,7 +406,7 @@
     <string>New action</string>
    </property>
    <property name="shortcut">
-    <string>Del</string>
+    <string>Backspace</string>
    </property>
   </action>
   <action name="actToggleToolBar">
@@ -462,7 +462,7 @@
     <string>Delete action</string>
    </property>
    <property name="shortcut">
-    <string>Alt+Del</string>
+    <string>Del</string>
    </property>
   </action>
   <action name="actionSimpleReport">
@@ -477,7 +477,7 @@
     <string>Time report</string>
    </property>
    <property name="shortcut">
-    <string>R</string>
+    <string>Ctrl+R</string>
    </property>
   </action>
   <action name="actTags">

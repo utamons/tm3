@@ -57,16 +57,16 @@ QSqlDatabase getDb();
 
 // Gets field value
 template <typename T>
-T getField(QSqlQuery q, const char *fieldName);
+T field(QSqlQuery q, const char *fieldName);
 template <typename T>
-T getField(QSqlQuery q, const char *fieldName) {
+T field(QSqlQuery q, const char *fieldName) {
     return qvariant_cast<T>(q.value(q.record().indexOf(fieldName)));
 }
 
 template <typename T>
-T getField(QSqlQuery q, int fldIdx);
+T field(QSqlQuery q, int fldIdx);
 template <typename T>
-T getField(QSqlQuery q, int fldIdx) {
+T field(QSqlQuery q, int fldIdx) {
     return qvariant_cast<T>(q.value(fldIdx));
 }
 
@@ -80,7 +80,7 @@ int maxDBRecords() {
     T::prepareDBMaxRecords(q);
 
     execQuery(q,[q,&result] {
-        result = getField<int>(q,0);
+        result = field<int>(q,0);
     });
 
     return result;
@@ -96,7 +96,7 @@ bool isDBUnique(T entity) {
     B::prepareDBUnique(q,entity);
 
     execQuery(q, [q,&result] {
-        result = getField<int>(q, 0) == 0;
+        result = field<int>(q, 0) == 0;
     });
 
     return result;

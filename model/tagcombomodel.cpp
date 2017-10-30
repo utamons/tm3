@@ -49,7 +49,7 @@ void TagComboModel::init() {
 
     execQuery(q, [q,this]() {
         rowList.append(
-                    Unit(getField<int>(q,"id"), getField<QString>(q,"name"))
+                    Unit(field<int>(q,"id"), field<QString>(q,"name"))
                     );
     });
 }

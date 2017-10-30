@@ -135,9 +135,9 @@ SqlQueryStatus ActivityTableModel::remove(const QModelIndex &row) {
             q.prepare("select id,cat_id from actions where time=:time");
             q.bindValue(":time", toEpochMins(nextDt));
             execQuery(q, [act,q]() {
-                if (act.cat.id == getField<int>(q,"cat_id")) {
+                if (act.cat.id == field<int>(q,"cat_id")) {
                     QSqlQuery qDel(getDb());
-                    int id = getField<int>(q,"id");
+                    int id = field<int>(q,"id");
                     qDel.prepare("delete from act_rate_link where act_id=:id");
                     qDel.bindValue(":id", id);
 
@@ -207,7 +207,7 @@ bool ActivityTableModel::isCrossTime(QDateTime beginTime, int mins, int selfId) 
     q.bindValue(":end",	toEpochMins(beginTime.addSecs(mins * 60)));
 
     execQuery(q, [&q,&result]() {
-        result = (getField<int>(q,"cnt") > 0);
+        result = (field<int>(q,"cnt") > 0);
     });
 
     return result;
@@ -222,14 +222,14 @@ QDateTime ActivityTableModel::getLastTime() {
     int mins = 0;
     bool found = false;
     execQuery(q, [q,&maxTime,&found]() {
-        maxTime = toDateTime(getField<long>(q,"m"));
+        maxTime = toDateTime(field<long>(q,"m"));
         found = maxTime.toMSecsSinceEpoch()>0;
     });
 
     if (found) {
         q.prepare("select mins from actions where time=:time");
         q.bindValue(":time", toEpochMins(maxTime));
-        execQuery(q, [q,&mins]() {mins = getField<int>(q,"mins");});
+        execQuery(q, [q,&mins]() {mins = field<int>(q,"mins");});
         Q_ASSERT(mins > 0);
         result = maxTime.addSecs(mins * 60);
     } else {
@@ -255,13 +255,13 @@ void ActivityTableModel::init(QDateTime begin, QDateTime end) {
     execQuery(q,
               [q,this]() {
         Activity act;
-        act.id = getField<int>(q,"aid");
-        act.cat.id = getField<int>(q,"cat_id");
-        act.time = toDateTime(getField<long>(q,"time"));
-        act.mins = getField<int>(q,"mins");
-        act.cat.name = getField<QString>(q,"cname");
-        act.cat.abbrev = getField<QString>(q,"abbrev");
-        act.comment = getField<QString>(q,"comment");
+        act.id = field<int>(q,"aid");
+        act.cat.id = field<int>(q,"cat_id");
+        act.time = toDateTime(field<long>(q,"time"));
+        act.mins = field<int>(q,"mins");
+        act.cat.name = field<QString>(q,"cname");
+        act.cat.abbrev = field<QString>(q,"abbrev");
+        act.comment = field<QString>(q,"comment");
 
         fillData(act);
 
@@ -285,12 +285,12 @@ void ActivityTableModel::fillData(Activity &act) {
 
     execQuery(q, [q,this,&act] () {
         RateVal rateVal;
-        rateVal.value = getField<double>(q,"value");
-        rateVal.rate.id = getField<int>(q,"rid");
-        rateVal.rate.name = getField<QString>(q,"rname");
-        rateVal.rate.time = getField<int>(q,"rtime");
-        rateVal.rate.comment = getField<QString>(q,"rcomment");
-        rateVal.rate.unit = Unit(getField<int>(q,"uid"), getField<QString>(q,"uname"));
+        rateVal.value = field<double>(q,"value");
+        rateVal.rate.id = field<int>(q,"rid");
+        rateVal.rate.name = field<QString>(q,"rname");
+        rateVal.rate.time = field<int>(q,"rtime");
+        rateVal.rate.comment = field<QString>(q,"rcomment");
+        rateVal.rate.unit = Unit(field<int>(q,"uid"), field<QString>(q,"uname"));
 
         act.rateValList.append(rateVal);
     });
@@ -302,8 +302,8 @@ void ActivityTableModel::fillData(Activity &act) {
     q.bindValue(":act_id", act.id);
 
     execQuery(q, [q,this,&act] () {
-        act.tagList.append(Unit(getField<int>(q,"tid"),
-                                getField<QString>(q,"tname")));
+        act.tagList.append(Unit(field<int>(q,"tid"),
+                                field<QString>(q,"tname")));
     });
 
 }

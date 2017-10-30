@@ -11,17 +11,17 @@ RateListModel::RateListModel(QList<Rate> excludes, QObject *parent) :
               "rate_rb r, unit_rb u where r.unit_id=u.id order by r.name");
 
     execQuery(q, [q,excludes,this]() {
-        int rid = getField<int>(q,"rid");
+        int rid = field<int>(q,"rid");
         for (Rate rate: excludes) {
             if (rate.id == rid)
                 return;
         }
         rowList.append(
                     Rate (rid,
-                          getField<QString>(q,"rname"),
-                          getField<QString>(q,"rcomment"),
-                          Unit(getField<int>(q,"uid"), getField<QString>(q,"uname")),
-                          getField<int>(q,"rtime"))
+                          field<QString>(q,"rname"),
+                          field<QString>(q,"rcomment"),
+                          Unit(field<int>(q,"uid"), field<QString>(q,"uname")),
+                          field<int>(q,"rtime"))
                     );
     });
 

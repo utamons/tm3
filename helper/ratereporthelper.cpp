@@ -22,7 +22,7 @@ QList<std::pair<QString,QString>> RateReportHelper::getRatesReport() const {
 	RateListModel rModel;
 
 	execQuery(q, [&rModel,&report,q]() {
-        Rate rt = rModel.rateById(getField<int>(q,"rid"));
+        Rate rt = rModel.rateById(field<int>(q,"rid"));
         double val = report.value(rt,0.0);
        report.insert(rt,val+RateReportHelper::calculateRate(q));
 	});
@@ -39,9 +39,9 @@ QList<std::pair<QString,QString>> RateReportHelper::getRatesReport() const {
 
 double RateReportHelper::calculateRate(QSqlQuery q) {
 
-	double mins = getField<double>(q,"mins");
-	double val = getField<double>(q,"val");
-	int rtime =  getField<int>(q,"rtime");
+	double mins = field<double>(q,"mins");
+	double val = field<double>(q,"val");
+	int rtime =  field<int>(q,"rtime");
 
     Q_ASSERT ((rtime > 0 && mins > 0) || rtime == 0);
 

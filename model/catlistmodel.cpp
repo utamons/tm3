@@ -7,9 +7,9 @@ CatListModel::CatListModel(QObject *parent) :  BaseListModel<Category>(parent) {
     q.prepare("select id,name,abbrev from cat_rb where virtual=0 order by abbrev");
     execQuery(q,[q,this]() {
             Category c;
-            c.id = getField<int>(q,"id");
-            c.abbrev = getField<QString>(q,"abbrev");
-            c.name = getField<QString>(q,"name");
+            c.id = field<int>(q,"id");
+            c.abbrev = field<QString>(q,"abbrev");
+            c.name = field<QString>(q,"name");
             c.isAbbrevList = true;
 
             CatTreeModel::fillData(c);

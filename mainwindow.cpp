@@ -186,7 +186,7 @@ void MainWindow::showStatus() {
     QString status;
     q.prepare("select count(id) as cnt from actions");
     execQuery(q, [q,&status,this]() {
-        int cnt = getField<int>(q,"cnt");
+			int cnt = field<int>(q,"cnt");
         status.append(tr("Overall records: ")+QString::number(cnt));
     });
     QDateTime last = model.getLastTime();

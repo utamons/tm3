@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]) {
 	int retcode = 1;
-    const QString lockFile = "/Users/oleg/Documents/tmp/TM3.lock";
+	const QString lockFile = "/tmp/TM3.lock";
 
 	QApplication app(argc, argv);
 	Q_INIT_RESOURCE(TM3res);
@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
 		if (checkLock(lockFile)) {
 			DBHelper *db = DBHelper::getInstance();
 			MainWindow mainWin;
+			// This is for Mac!
 			app.setWindowIcon(QIcon(":/icons.icns"));
 			mainWin.show();
 

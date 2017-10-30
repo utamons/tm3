@@ -31,8 +31,8 @@ QList<std::pair<QString,QString>> CatReportHelper::getRootCatReport(QString root
         q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
 
         execQuery(q, [q,&result]() {
-            auto nm = getField<QString>(q,"nm");
-            auto sm = timeFromMins(getField<long>(q,"sm"));
+            auto nm = field<QString>(q,"nm");
+            auto sm = timeFromMins(field<long>(q,"sm"));
             result.append(std::pair<QString,QString>(nm,sm));
         });
 
@@ -46,7 +46,7 @@ QList<QString> CatReportHelper::getRootCatList() const {
 	QList<QString> result;
 	q.prepare("select name from cat_rb where parent_id=0");
 	execQuery(q,[q,&result]() {
-			auto name = getField<QString>(q,"name");
+			auto name = field<QString>(q,"name");
 			result.append(name);
 		});
 	return result;
@@ -62,7 +62,7 @@ QString CatReportHelper::getTotalTime() const {
     q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
 
     execQuery(q, [q,&total]() {
-        total = getField<double>(q,"total");
+        total = field<double>(q,"total");
     });
 
     auto pc = total / pHelper->periodMins() * 100.0;
@@ -97,7 +97,7 @@ long CatReportHelper::getTotalTime(QString catName) const {
 
     long result;
     execQuery(q, [q,&result]() {
-        result = getField<long>(q,"sm");
+        result = field<long>(q,"sm");
     });
 
     return result;
@@ -114,7 +114,7 @@ long CatReportHelper::getCatTime(int catId) const {
     q.bindValue(":id",catId);
 
     execQuery(q, [q,&total]() {
-        total = getField<long>(q,"total");
+        total = field<long>(q,"total");
     });
 
     return total;
@@ -126,7 +126,7 @@ QList<int> CatReportHelper::childLeafIds(int parentId, QList<int> &ql) const {
     q.bindValue(":parent_id", parentId);
 
     execQuery(q, [q,&ql,this]() {
-        childLeafIds(getField<int>(q,"id"),ql);
+        childLeafIds(field<int>(q,"id"),ql);
     });
 
     ql.append(parentId);
@@ -141,7 +141,7 @@ int CatReportHelper::rootId(QString rootName) const {
 
     int rootId;
     execQuery(q, [q,&rootId]() {
-        rootId = getField<int>(q,"id");
+        rootId = field<int>(q,"id");
     });
 
     return rootId;

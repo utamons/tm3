@@ -332,15 +332,15 @@ void CatTreeModel::buildBranch(TreeNode<Category> *parent) {
     q.bindValue(":parentId", parent->getId());
     execQuery(q, [q,this,parent] () {
         Category cat;
-        cat.id = getField<int>(q,"id");
-        cat.name = getField<QString>(q,"name");
-        cat.abbrev = getField<QString>(q,"abbrev");
-        cat.comment = getField<QString>(q,"comment");
-        cat.isVirt = getField<bool>(q,"virtual");
+        cat.id = field<int>(q,"id");
+        cat.name = field<QString>(q,"name");
+        cat.abbrev = field<QString>(q,"abbrev");
+        cat.comment = field<QString>(q,"comment");
+        cat.isVirt = field<bool>(q,"virtual");
         fillData(cat);
 
         auto newNode = new TreeNode<Category>(cat.id,cat);
-        newNode->setExpanded(getField<bool>(q,"expanded"));
+        newNode->setExpanded(field<bool>(q,"expanded"));
 
         buildBranch(newNode);
         parent->addChild(newNode);
@@ -357,12 +357,12 @@ void CatTreeModel::fillData(Category &cat) {
     q.bindValue(":cat_id", cat.id);
     execQuery(q, [q,&cat] () {
         RateVal rateVal;
-        rateVal.value = getField<double>(q,"def_value");
-        rateVal.rate.id = getField<int>(q,"rid");
-        rateVal.rate.name = getField<QString>(q,"rname");
-        rateVal.rate.time = getField<int>(q,"rtime");
-        rateVal.rate.comment = getField<QString>(q,"rcomment");
-        rateVal.rate.unit = Unit (getField<int>(q,"uid"), getField<QString>(q,"uname"));
+        rateVal.value = field<double>(q,"def_value");
+        rateVal.rate.id = field<int>(q,"rid");
+        rateVal.rate.name = field<QString>(q,"rname");
+        rateVal.rate.time = field<int>(q,"rtime");
+        rateVal.rate.comment = field<QString>(q,"rcomment");
+        rateVal.rate.unit = Unit (field<int>(q,"uid"), field<QString>(q,"uname"));
 
         cat.rates.append(rateVal);
     });
@@ -374,8 +374,8 @@ void CatTreeModel::fillData(Category &cat) {
     q.bindValue(":cat_id", cat.id);
 
     execQuery(q, [q,&cat] () {
-        cat.tagList.append(Unit(getField<int>(q,"tid"),
-                                getField<QString>(q,"tname")));
+        cat.tagList.append(Unit(field<int>(q,"tid"),
+                                field<QString>(q,"tname")));
     });
 }
 
