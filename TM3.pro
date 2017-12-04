@@ -112,3 +112,6 @@ FORMS    += \
 
 RESOURCES += \
     TM3res.qrc
+
+DISTFILES += \
+    plan.txt
