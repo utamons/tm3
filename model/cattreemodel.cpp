@@ -253,12 +253,12 @@ void CatTreeModel::updateNode(Category cat, const QModelIndex &index) {
     }
 
     for(auto u: cat.tagList) {
+		QSqlQuery q(getDb());
         q.prepare("insert into cat_tag_link (cat_id,tag_id) values (:cat_id,:tag_id)");
         q.bindValue(":cat_id",cat.id);
         q.bindValue(":tag_id",u.id);
         execQuery(q);
     }
-
 
     q.prepare("update cat_rb set "
               "name=:name, "
