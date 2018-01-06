@@ -47,3 +47,7 @@ bool isEmpty(QString val);
 bool isNumeric(QString val);
 
 QString tr(const char *str);
+
+void saveInsKey(QString key);
+
+QString restoreInsKey();

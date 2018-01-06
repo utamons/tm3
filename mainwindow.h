@@ -34,6 +34,7 @@ public slots:
 	void dayFwd();
 	void actSimpleReport();
 	void today();
+	void toggleInsKey();
 
 private:
 	QString getLoadStr(double load);

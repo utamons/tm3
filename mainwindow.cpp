@@ -45,6 +45,9 @@ MainWindow::MainWindow(QWidget *parent) :
     statusbar->setSizeGripEnabled(false);
     statusbar->setContentsMargins(15, 0, 0, 5);
 
+
+	actionActNew->setShortcut(QApplication::translate("MainWindow", restoreInsKey().toLocal8Bit().constData(), Q_NULLPTR));
+
     showStatus();
 }
 
@@ -190,7 +193,10 @@ void MainWindow::showStatus() {
         status.append(tr("Overall records: ")+QString::number(cnt));
     });
     QDateTime last = model.getLastTime();
-    lblStatus.setText(status + tr("  Last: ") + last.toString("hh:mm"));
+
+	QString insKey = restoreInsKey();
+
+	lblStatus.setText(status + tr("  Last: ") + last.toString("hh:mm")+" ("+insKey+")");
 }
 
 void MainWindow::actSimpleReport() {
@@ -201,7 +207,26 @@ void MainWindow::actSimpleReport() {
 }
 
 void MainWindow::today() {
-    dateEdit->setDate(QDate::currentDate());
+	dateEdit->setDate(QDate::currentDate());
+}
+
+
+/*
+	I use two different keyboards and two different keys are convinient for insert action on these keyboards.
+*/
+void MainWindow::toggleInsKey(){
+	QString lastKey = restoreInsKey();
+	QString newKey;
+
+	if (lastKey == "Del") {
+		newKey = "Backspace";
+	} else {
+		newKey = "Del";
+	}
+
+	actionActNew->setShortcut(QApplication::translate("MainWindow", newKey.toLocal8Bit().constData(), Q_NULLPTR));
+	saveInsKey(newKey);
+	showStatus();
 }
 
 void MainWindow::actTagDlg() {

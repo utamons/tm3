@@ -355,13 +355,13 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionToggle_Ins_key"/>
     <addaction name="actExit"/>
    </widget>
    <widget class="QMenu" name="menuRB">
     <property name="title">
      <string>Refbooks</string>
     </property>
-    <addaction name="actNew2"/>
     <addaction name="actUnits"/>
     <addaction name="actRates"/>
     <addaction name="actTags"/>
@@ -404,20 +404,6 @@
    </property>
    <property name="toolTip">
     <string>New action</string>
-   </property>
-   <property name="shortcut">
-    <string>Backspace</string>
-   </property>
-  </action>
-  <action name="actToggleToolBar">
-   <property name="text">
-    <string>Hide toolbar</string>
-   </property>
-   <property name="toolTip">
-    <string>Hide toolbar</string>
-   </property>
-   <property name="shortcut">
-    <string>Alt+T</string>
    </property>
   </action>
   <action name="actUnits">
@@ -462,7 +448,7 @@
     <string>Delete action</string>
    </property>
    <property name="shortcut">
-    <string>Del</string>
+    <string>Ctrl+Backspace</string>
    </property>
   </action>
   <action name="actionSimpleReport">
@@ -485,19 +471,9 @@
     <string>Tags</string>
    </property>
   </action>
-  <action name="actNew2">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/images/list-add.png</normaloff>:/images/list-add.png</iconset>
-   </property>
+  <action name="actionToggle_Ins_key">
    <property name="text">
-    <string>Add action</string>
-   </property>
-   <property name="toolTip">
-    <string>New Action</string>
-   </property>
-   <property name="shortcut">
-    <string>Ins</string>
+    <string>Toggle Ins key</string>
    </property>
   </action>
  </widget>
@@ -688,7 +664,7 @@
    <slot>dayFwd()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>308</x>
+     <x>370</x>
      <y>64</y>
     </hint>
     <hint type="destinationlabel">
@@ -720,7 +696,7 @@
    <slot>today()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>281</x>
+     <x>336</x>
      <y>64</y>
     </hint>
     <hint type="destinationlabel">
@@ -746,10 +722,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>actNew2</sender>
+   <sender>actionToggle_Ins_key</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
-   <slot>addAct2()</slot>
+   <slot>toggleInsKey()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -782,5 +758,6 @@
   <slot>actBudjetDlg()</slot>
   <slot>actDaysDlg()</slot>
   <slot>addAct2()</slot>
+  <slot>toggleInsKey()</slot>
  </slots>
 </ui>

@@ -46,6 +46,16 @@ QString getWorkPath() {
 	return QDir::toNativeSeparators(wdPath);
 }
 
+void saveInsKey(QString key) {
+	QSettings settings("TM3","TM3");
+	settings.setValue("insKey",key);
+}
+
+QString restoreInsKey() {
+	QSettings settings("TM3", "TM3");
+	return settings.value("insKey","Backspace").toString();
+}
+
 void saveWinPos(QString winName, QPoint pos, QSize size) {
 	QSettings settings("TM3", "TM3");
 	QString sizePrefix = "size";
