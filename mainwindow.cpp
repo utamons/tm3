@@ -46,17 +46,17 @@ MainWindow::MainWindow(QWidget *parent) :
     statusbar->setContentsMargins(15, 0, 0, 5);
 
 
-	actionActNew->setShortcut(QApplication::translate("MainWindow", restoreInsKey().toLocal8Bit().constData(), Q_NULLPTR));
+    actionActNew->setShortcut(QApplication::translate("MainWindow", restoreInsKey().toLocal8Bit().constData(), Q_NULLPTR));
 
     showStatus();
 }
 
 void MainWindow::resizeColumns() {
     double tWidth = tableActs->contentsRect().width();
-    tableActs->setColumnWidth(0, tWidth / 100.0 * COL1_PC_SIZE);
-    tableActs->setColumnWidth(1, tWidth / 100.0 * COL2_PC_SIZE);
-    tableActs->setColumnWidth(2, tWidth / 100.0 * COL3_PC_SIZE);
-    tableActs->setColumnWidth(3, tWidth / 100.0 * COL4_PC_SIZE);
+    tableActs->setColumnWidth(0, static_cast<int>(tWidth / 100.0 * COL1_PC_SIZE));
+    tableActs->setColumnWidth(1, static_cast<int>(tWidth / 100.0 * COL2_PC_SIZE));
+    tableActs->setColumnWidth(2, static_cast<int>(tWidth / 100.0 * COL3_PC_SIZE));
+    tableActs->setColumnWidth(3, static_cast<int>(tWidth / 100.0 * COL4_PC_SIZE));
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
@@ -157,9 +157,9 @@ void MainWindow::delAct() {
 }
 
 void MainWindow::about() {
-	QString msg = tr("<b>TM3</b> Personal timetracker.<br/><br/> ") +
+    QString msg = tr("<b>TM3</b> Personal timetracker.<br/><br/> ") +
 
-	        tr("Version ") + PROGRAM_VERSION + "<br/>Copyleft (c) " + getCopyrightYears() + ", CornKnight.";
+            tr("Version ") + PROGRAM_VERSION + "<br/>Copyleft (c) " + getCopyrightYears() + ", CornKnight.";
 
     QMessageBox::about(this, tr("About"), msg);
 }
@@ -170,7 +170,7 @@ void MainWindow::readSettings() {
 }
 
 void MainWindow::dateChanged() {
-    model.init(QDateTime(dateEdit->date()), QDateTime(dateEdit->date().addDays(1)));
+    model.init(dateEdit->date().startOfDay(), dateEdit->date().addDays(1).startOfDay());
     tableActs->reset();
     selectLastRow();
     fillLoadLabel();
@@ -188,15 +188,15 @@ void MainWindow::showStatus() {
     QSqlQuery q(getDb());
     QString status;
     q.prepare("select count(id) as cnt from actions");
-    execQuery(q, [q,&status,this]() {
-			int cnt = field<int>(q,"cnt");
+    execQuery(q, [q,&status]() {
+        int cnt = field<int>(q,"cnt");
         status.append(tr("Overall records: ")+QString::number(cnt));
     });
     QDateTime last = model.getLastTime();
 
-	QString insKey = restoreInsKey();
+    QString insKey = restoreInsKey();
 
-	lblStatus.setText(status + tr("  Last: ") + last.toString("hh:mm")+" ("+insKey+")");
+    lblStatus.setText(status + tr("  Last: ") + last.toString("hh:mm")+" ("+insKey+")");
 }
 
 void MainWindow::actSimpleReport() {
@@ -207,26 +207,26 @@ void MainWindow::actSimpleReport() {
 }
 
 void MainWindow::today() {
-	dateEdit->setDate(QDate::currentDate());
+    dateEdit->setDate(QDate::currentDate());
 }
 
 
 /*
-	I use two different keyboards and two different keys are convinient for insert action on these keyboards.
+    I use two different keyboards and two different keys are convinient for insert action on these keyboards.
 */
 void MainWindow::toggleInsKey(){
-	QString lastKey = restoreInsKey();
-	QString newKey;
+    QString lastKey = restoreInsKey();
+    QString newKey;
 
-	if (lastKey == "Del") {
-		newKey = "Backspace";
-	} else {
-		newKey = "Del";
-	}
+    if (lastKey == "Del") {
+        newKey = "Backspace";
+    } else {
+        newKey = "Del";
+    }
 
-	actionActNew->setShortcut(QApplication::translate("MainWindow", newKey.toLocal8Bit().constData(), Q_NULLPTR));
-	saveInsKey(newKey);
-	showStatus();
+    actionActNew->setShortcut(QApplication::translate("MainWindow", newKey.toLocal8Bit().constData(), Q_NULLPTR));
+    saveInsKey(newKey);
+    showStatus();
 }
 
 void MainWindow::actTagDlg() {
@@ -253,7 +253,7 @@ QString MainWindow::getLoadStr(double load) {
         result = "N-load: "+strsum;
     }
 
-     return result;
+    return result;
 }
 
 void MainWindow::fillLoadLabel() {
@@ -268,8 +268,8 @@ std::pair<Activity, Activity> MainWindow::splitByDay(Activity act) {
 
     QDate nextDate = act.time.addSecs(act.mins * 60).date();
     if (act.time.date() != nextDate) {
-        QDateTime nextTime(nextDate);
-        int minsTo = act.time.secsTo(nextTime) / 60;
+        QDateTime nextTime = nextDate.startOfDay();
+        int minsTo = static_cast<int>(act.time.secsTo(nextTime) / 60);
         Q_ASSERT(minsTo > 0);
 
         int minsAfter = act.mins - minsTo;
