@@ -24,20 +24,20 @@ bool checkWorkDir() {
 }
 
 quint64 toEpochMins(QDateTime dt) {
-	return dt.toMSecsSinceEpoch() / 60000L;
+    return static_cast<quint64>(dt.toMSecsSinceEpoch() / 60000L);
 }
 
 quint64 toEpochMins(QDate dt) {
-	QDateTime dtm(dt);
-	return dtm.toMSecsSinceEpoch() / 60000L;
+    QDateTime dtm = dt.startOfDay();
+    return static_cast<quint64>(dtm.toMSecsSinceEpoch() / 60000L);
 }
 
 QDateTime toDateTime(quint64 epochMins) {
-	return QDateTime::fromMSecsSinceEpoch(epochMins * 60000L);
+    return QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(epochMins * 60000L));
 }
 
 QDate toDate(quint64 epochMins) {
-	return QDateTime::fromMSecsSinceEpoch(epochMins * 60000L).date();
+    return QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(epochMins * 60000L)).date();
 }
 
 QString getWorkPath() {
