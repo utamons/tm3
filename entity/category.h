@@ -8,21 +8,13 @@
 
 class Category : public Entity {
 public:
-    Category() {
-        id = 0;
-        name = "";
-        isAbbrevList = false;
-    }
+    Category();
 
-    QString toString() const override {
-        return isAbbrevList?abbrev:name;
-    }
+    QString toString() const override;
 
-    bool isEmpty() const override {
-        return id == 0 || name.isEmpty();
-    }
+    bool isEmpty() const override;
 
-    void setId (QVariant id) override { this->id = id.toInt(); }
+    void setId (QVariant id) override;
 
     int id;
     QString name;

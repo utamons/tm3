@@ -9,7 +9,7 @@
 class CatListModel : public BaseListModel<Category>
 {
 public:
-    explicit CatListModel(QObject *parent = 0);
+    explicit CatListModel(QObject *parent = nullptr);
 
     QList<Category> getList() const { return rowList; }
 

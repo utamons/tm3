@@ -7,7 +7,7 @@
 class ActivityTableModel: public BaseTableModel<Activity> {
 Q_OBJECT
 public:
-	explicit ActivityTableModel(QObject *parent = 0) :
+    explicit ActivityTableModel(QObject *parent = nullptr) :
 			BaseTableModel<Activity>(parent) {
 		colCount = 4;
 	}

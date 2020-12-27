@@ -8,7 +8,7 @@ class UnitListModel: public BaseListModel<Unit>
 {
     Q_OBJECT
 public:
-    explicit UnitListModel(QObject *parent = 0);
+    explicit UnitListModel(QObject *parent = nullptr);
 
 private:
 

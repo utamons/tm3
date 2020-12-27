@@ -10,9 +10,9 @@ class RateValUpdateDlg : public QDialog, private Ui_RateValUpdateDlg
 {
     Q_OBJECT
 public:
-    explicit RateValUpdateDlg(RateVal rateVal = RateVal(), QList<RateVal> excludes = QList<RateVal>(), QWidget *parent = 0);
+    explicit RateValUpdateDlg(RateVal rateVal = RateVal(), QList<RateVal> excludes = QList<RateVal>(), QWidget *parent = nullptr);
 
-    void accept();
+    void accept() override;
 
     RateVal getRateVal() {return rateVal;}
 

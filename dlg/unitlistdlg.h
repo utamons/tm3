@@ -9,7 +9,7 @@ class UnitListDlg : public QDialog, private Ui_UnitDlg
 {
     Q_OBJECT
 public:
-    explicit UnitListDlg(QWidget *parent = 0);
+    explicit UnitListDlg(QWidget *parent = nullptr);
     
 signals:
     

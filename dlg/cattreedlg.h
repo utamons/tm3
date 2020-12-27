@@ -10,8 +10,8 @@ class CatTreeDlg : public QDialog, private Ui_CatTreeDlg
 {
     Q_OBJECT
 public:
-    explicit CatTreeDlg(QWidget *parent = 0);
-    void showEvent(QShowEvent *) {
+    explicit CatTreeDlg(QWidget *parent = nullptr);
+    void showEvent(QShowEvent *) override {
         expand();
     }
     void expand();

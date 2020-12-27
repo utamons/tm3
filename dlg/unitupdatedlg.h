@@ -20,7 +20,7 @@ UnitUpdateDlg(Unit unit= Unit(), QWidget *parent=nullptr) :  QDialog(parent) {
         nameLineEdit->setText(unit.name);
 }
 
-void accept() {
+void accept() override {
     unit.name = nameLineEdit->text().trimmed();
     if (unit.name.length() == 0) {
 			QMessageBox::warning(this,tr("Error"),tr("Please, enter unit name!"));
@@ -31,7 +31,7 @@ void accept() {
     }
 }
 
-void showEvent(QShowEvent *event) {
+void showEvent(QShowEvent *event) override  {
     nameLineEdit->setFocus();
     nameLineEdit->selectAll();
     event->accept();

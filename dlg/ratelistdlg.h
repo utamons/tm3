@@ -8,7 +8,7 @@ class RateListDlg : public QDialog, private Ui_rateDlg
 {
     Q_OBJECT
 public:
-    explicit RateListDlg(QWidget *parent = 0);
+    explicit RateListDlg(QWidget *parent = nullptr);
     
 public slots:
     void addRate();

@@ -8,15 +8,15 @@
 class MainWindow: public QMainWindow, private Ui_MainWindow {
 Q_OBJECT
 public:
-	explicit MainWindow(QWidget *parent = 0);
-	void showEvent(QShowEvent *) {
+    explicit MainWindow(QWidget *parent = nullptr);
+    void showEvent(QShowEvent *) override {
 		resizeColumns();
 		showStatus();
 		selectLastRow();
 	}
 
 protected:
-	void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *event) override;
 
 public slots:
 	void about();

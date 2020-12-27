@@ -8,9 +8,9 @@ class CatAbbrevValidator : public QValidator
 {
     Q_OBJECT
 public:
-    explicit CatAbbrevValidator(QList<Category> catList,QObject *parent = 0);
+    explicit CatAbbrevValidator(QList<Category> catList,QObject *parent = nullptr);
     
-    QValidator::State validate(QString &str, int &) const;
+    QValidator::State validate(QString &str, int &) const override;
     void reload();
 
 

@@ -283,7 +283,7 @@ void ActivityTableModel::fillData(Activity &act) {
                 "l.rate_id=r.id and r.unit_id=u.id and l.act_id=:act_id");
     q.bindValue(":act_id", act.id);
 
-    execQuery(q, [q,this,&act] () {
+    execQuery(q, [q,&act] () {
         RateVal rateVal;
         rateVal.value = field<double>(q,"value");
         rateVal.rate.id = field<int>(q,"rid");
@@ -301,7 +301,7 @@ void ActivityTableModel::fillData(Activity &act) {
                 "l.tag_id=t.id and l.act_id=:act_id");
     q.bindValue(":act_id", act.id);
 
-    execQuery(q, [q,this,&act] () {
+    execQuery(q, [q,&act] () {
         act.tagList.append(Unit(field<int>(q,"tid"),
                                 field<QString>(q,"tname")));
     });

@@ -42,9 +42,9 @@ CatUpdateDlg::CatUpdateDlg(Category cat, QWidget *parent) :
 
 void CatUpdateDlg::resizeColumns() {
     double tWidth = tableRate->contentsRect().width();
-    tableRate->setColumnWidth(0,tWidth/100.0*COL1_PC_SIZE);
-    tableRate->setColumnWidth(1,tWidth/100.0*COL2_PC_SIZE);
-    tableRate->setColumnWidth(2,tWidth/100.0*COL3_PC_SIZE);
+    tableRate->setColumnWidth(0,static_cast<int>(tWidth/100.0*COL1_PC_SIZE));
+    tableRate->setColumnWidth(1,static_cast<int>(tWidth/100.0*COL2_PC_SIZE));
+    tableRate->setColumnWidth(2,static_cast<int>(tWidth/100.0*COL3_PC_SIZE));
 }
 
 void CatUpdateDlg::addRate() {

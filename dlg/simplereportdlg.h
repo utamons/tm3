@@ -11,23 +11,23 @@
 class SimpleReportDlg: public QDialog, private Ui_SimpleReportDlg {
 Q_OBJECT
 public:
-	explicit SimpleReportDlg(QWidget *parent = 0);
+    explicit SimpleReportDlg(QWidget *parent = nullptr);
 
-	~SimpleReportDlg() {
+    ~SimpleReportDlg() override {
 		emit dead();
 	}
 
-	void accept() {
+    void accept() override {
 		saveWinPos("SimpleReportDlg", pos(), size());
 		QDialog::accept();
 	}
 
-	void showEvent(QShowEvent *) {
+    void showEvent(QShowEvent *) override {
 		makeReport();
 	}
 
 protected:
-	void closeEvent(QCloseEvent *event) {
+    void closeEvent(QCloseEvent *event) override {
 		saveWinPos("SimpleReportDlg", pos(), size());
 		event->accept();
 	}

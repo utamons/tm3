@@ -10,7 +10,7 @@ class RateValTableModel : public BaseTableModel<RateVal>
 {
     Q_OBJECT
 public:
-    RateValTableModel(QList<RateVal> rowList, QObject *parent = 0);
+    RateValTableModel(QList<RateVal> rowList, QObject *parent = nullptr);
 
     QList<RateVal> getRowList() const { return rowList; }
     void replaceList(const QList<RateVal> &newList);

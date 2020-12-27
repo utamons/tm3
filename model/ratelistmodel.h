@@ -8,7 +8,7 @@ class RateListModel : public BaseListModel<Rate>
 {
     Q_OBJECT
 public:
-    explicit RateListModel(QList<Rate> excludes = QList<Rate>(), QObject *parent = 0);
+    explicit RateListModel(QList<Rate> excludes = QList<Rate>(), QObject *parent = nullptr);
 
 	int idBySummary(QString name) const;
 

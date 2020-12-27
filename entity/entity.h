@@ -10,4 +10,5 @@ public:
     virtual QString toString () const {return "";}
     virtual QList<QVariant> toTableRow() const {return QList<QVariant>();}
     virtual bool isEmpty() const {return false;}
+    virtual ~Entity();
 };

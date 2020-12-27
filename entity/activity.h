@@ -9,27 +9,13 @@
 
 class Activity : public Entity {
 public:
-    Activity() {
-        id = 0;
-        mins = 0;
-    }
+    Activity();
 
-    bool isEmpty() const override {
-        return cat.isEmpty() || mins == 0;
-    }
+    bool isEmpty() const override;
 
-    QList<QVariant> toTableRow() const override {
-        QList<QVariant> row;
-        row.append(time);
-        row.append(timeFromMins(mins));
-        row.append(cat.name);
-        row.append(comment);
-        return row;
-    }
+    QList<QVariant> toTableRow() const override;
 
-    void setId(QVariant id) override {
-        this->id = id.toInt();
-    }
+    void setId(QVariant id) override;
 
     QList<RateVal> rateValList;
     QList<Unit> tagList;
@@ -39,3 +25,11 @@ public:
     int id;
     QString comment;
 };
+
+
+
+
+
+
+
+

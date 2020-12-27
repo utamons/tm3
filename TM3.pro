@@ -19,6 +19,12 @@ INCLUDEPATH += $$PWD\
 
 
 SOURCES += main.cpp\
+    entity/activity.cpp \
+    entity/category.cpp \
+    entity/entity.cpp \
+    entity/rate.cpp \
+    entity/rateval.cpp \
+    entity/unit.cpp \
         mainwindow.cpp \
     tm3util.cpp \
     catabbrevvalidator.cpp \

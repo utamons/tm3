@@ -14,7 +14,7 @@ class CatTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
 public:
-    explicit CatTreeModel(QObject *parent = 0);
+    explicit CatTreeModel(QObject *parent = nullptr);
 
     ~CatTreeModel() {
         delete root;

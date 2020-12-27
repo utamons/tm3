@@ -7,7 +7,7 @@ class TagListModel: public BaseListModel<Unit>
 {
     Q_OBJECT
 public:
-    explicit TagListModel(QObject *parent = 0);
+    explicit TagListModel(QObject *parent = nullptr);
 
 private:
 

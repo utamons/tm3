@@ -14,10 +14,10 @@ class ActUpdateDlg : public QDialog,private Ui_ActUpdateDlg
 {
     Q_OBJECT
 public:
-    explicit ActUpdateDlg(Activity act = Activity(),  QDateTime beginTime = ActivityTableModel::getLastTime(), QWidget *parent = 0);
-    void accept();
+    explicit ActUpdateDlg(Activity act = Activity(),  QDateTime beginTime = ActivityTableModel::getLastTime(), QWidget *parent = nullptr);
+    void accept() override;
 
-    void showEvent(QShowEvent *) {
+    void showEvent(QShowEvent *) override {
        resizeColumns();
        comboCats->lineEdit()->setSelection(0,act.cat.abbrev.length());
     }

@@ -11,11 +11,11 @@ class CatUpdateDlg : public QDialog, private Ui_CatUpdateDlg
 {
     Q_OBJECT
 public:
-    explicit CatUpdateDlg(Category cat = Category(), QWidget *parent = 0);
+    explicit CatUpdateDlg(Category cat = Category(), QWidget *parent = nullptr);
 
     void resizeColumns();
 
-    void showEvent(QShowEvent *) {
+    void showEvent(QShowEvent *) override {
        resizeColumns();
     }
 
@@ -28,7 +28,7 @@ public slots:
     void delTag();
     void updateRate(QModelIndex idx);
     void changeVirtual();
-    void accept();
+    void accept() override;
     void rateModelChanged();
     void tagModelChanged();
 

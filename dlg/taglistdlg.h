@@ -9,7 +9,7 @@ class TagListDlg : public QDialog, private Ui_UnitDlg
 {
     Q_OBJECT
 public:
-    explicit TagListDlg(QWidget *parent = 0);
+    explicit TagListDlg(QWidget *parent = nullptr);
 
 signals:
 

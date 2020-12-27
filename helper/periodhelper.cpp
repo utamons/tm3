@@ -17,7 +17,7 @@ void PeriodHelper::dt1Change() {
 			dtFirst->setDate(dtSecond->date());
 			period = 1;
 		} else {
-			period = dtFirst->date().daysTo(dtSecond->date()) + 1;
+            period = static_cast<int>(dtFirst->date().daysTo(dtSecond->date())) + 1;
 		}
 		setNameByDates();
 		emit makeReport();
@@ -30,7 +30,7 @@ void PeriodHelper::dt2Change() {
 			dtFirst->setDate(dtSecond->date());
 			period = 1;
 		} else {
-			period = dtFirst->date().daysTo(dtSecond->date()) + 1;
+            period = static_cast<int>(dtFirst->date().daysTo(dtSecond->date())) + 1;
 		}
 		setNameByDates();
 		emit makeReport();
@@ -39,7 +39,7 @@ void PeriodHelper::dt2Change() {
 
 void PeriodHelper::setNameByDates() {
 	name.clear();
-	int period = dtFirst->date().daysTo(dtSecond->date());
+    int period = static_cast<int>(dtFirst->date().daysTo(dtSecond->date()));
 	if (period == 6)
 		name = tr("week ");
 	name.append(dtFirst->date().toString("dd.MM.yyyy"));
@@ -137,7 +137,7 @@ void PeriodHelper::checkValid() const {
 int PeriodHelper::periodMins() const {
 	checkValid();
 	const int MINS_IN_DAY = 1440;
-	return (dtFirst->date().daysTo(dtSecond->date()) + 1) * MINS_IN_DAY;
+    return static_cast<int>(dtFirst->date().daysTo(dtSecond->date()) + 1) * MINS_IN_DAY;
 }
 
 QString PeriodHelper::getMonthName(QDate dt) {
@@ -185,12 +185,12 @@ QString PeriodHelper::getMonthName(QDate dt) {
 
 int PeriodHelper::dt1toMinsSinceEpoch() const {
 	checkValid();
-	return QDateTime(dtFirst->date()).toMSecsSinceEpoch()/60000;
+    return static_cast<int>(dtFirst->date().startOfDay().toMSecsSinceEpoch())/60000;
 }
 
 int PeriodHelper::dt2toMinsSinceEpoch() const {
 	checkValid();
-	return (QDateTime(dtSecond->date().addDays(1)).toMSecsSinceEpoch()-1)/60000;
+    return static_cast<int>(dtSecond->date().startOfDay().addDays(1).toMSecsSinceEpoch()-1)/60000;
 }
 
 void PeriodHelper::parentDead() {

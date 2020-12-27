@@ -8,8 +8,8 @@
 class TagComboDlg : public QDialog, private Ui_TagComboDlg
 {
 public:
-    TagComboDlg(QList<Unit> excludes=QList<Unit>(),QWidget *parent=0);
-    void accept();
+    TagComboDlg(QList<Unit> excludes=QList<Unit>(),QWidget *parent=nullptr);
+    void accept() override;
     Unit unit() const {return selUnit;}
 
 private:

@@ -16,7 +16,7 @@ public:
         colCount = 0;
     }
 
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override{
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override {
         return parent.isValid() ? 0 : rowList.length();
     }
 

@@ -5,6 +5,6 @@
 
 class CatTagsListModel :  public  BaseListModel<Unit> {
 public:
-    explicit CatTagsListModel(const QList<Unit> &rowList, QObject *parent=0);
+    explicit CatTagsListModel(const QList<Unit> &rowList, QObject *parent=nullptr);
     QList<Unit> getList() { return rowList; }
 };

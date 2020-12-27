@@ -14,11 +14,11 @@ class BaseListModel : public QAbstractListModel {
 public:
     explicit BaseListModel(QObject *parent = nullptr) : QAbstractListModel(parent) {}
 
-    int rowCount(const QModelIndex &parent = QModelIndex()) const {
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override {
         return parent.isValid() ? 0 : rowList.length();
     }
 
-    QVariant data(const QModelIndex &index, int role) const {
+    QVariant data(const QModelIndex &index, int role) const override  {
         QVariant result = QVariant();
         if (index.isValid()) {
             T obj = rowList[index.row()];
@@ -38,7 +38,7 @@ public:
     }
 
     QModelIndex index(int row, int column,
-                      const QModelIndex &parent=QModelIndex()) const {
+                      const QModelIndex &parent=QModelIndex()) const override {
         return !parent.isValid() && rowList.length() > 0
                 && row < rowList.length() && row > -1 ?
                     createIndex( row, column, const_cast<T*>( &(rowList.at(row)) )) : QModelIndex();

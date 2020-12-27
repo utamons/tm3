@@ -10,9 +10,9 @@ class RateUpdateDlg : public QDialog, private Ui_rateUpdateDlg
 {
     Q_OBJECT
 public:
-    explicit RateUpdateDlg(Rate rate = Rate(), QWidget *parent = 0);
+    explicit RateUpdateDlg(Rate rate = Rate(), QWidget *parent = nullptr);
 
-    void accept();
+    void accept() override;
 
     Rate getRate() const {
         return rate;

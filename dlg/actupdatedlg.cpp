@@ -50,7 +50,7 @@ ActUpdateDlg::ActUpdateDlg(Activity act, QDateTime beginTime, QWidget *parent) :
             && beginTime.addSecs(24 * 3600) >= QDateTime::currentDateTime()
             && beginTime.secsTo(QDateTime::currentDateTime()) > 0) {
 		spinHour->setValue(
-				beginTime.secsTo(QDateTime::currentDateTime()) / 3600);
+                static_cast<int>(beginTime.secsTo(QDateTime::currentDateTime()) / 3600));
 		spinMin->setValue(
 				roundMins(
 						beginTime.secsTo(QDateTime::currentDateTime()) % 3600
@@ -139,9 +139,9 @@ void ActUpdateDlg::tagModelChanged() {
 
 void ActUpdateDlg::resizeColumns() {
 	double tWidth = tableRates->contentsRect().width();
-	tableRates->setColumnWidth(0, tWidth / 100.0 * COL1_PC_SIZE);
-	tableRates->setColumnWidth(1, tWidth / 100.0 * COL2_PC_SIZE);
-	tableRates->setColumnWidth(2, tWidth / 100.0 * COL3_PC_SIZE);
+    tableRates->setColumnWidth(0, static_cast<int>(tWidth / 100.0 * COL1_PC_SIZE));
+    tableRates->setColumnWidth(1, static_cast<int>(tWidth / 100.0 * COL2_PC_SIZE));
+    tableRates->setColumnWidth(2, static_cast<int>(tWidth / 100.0 * COL3_PC_SIZE));
 }
 
 void ActUpdateDlg::accept() {
