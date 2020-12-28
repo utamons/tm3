@@ -65,7 +65,7 @@ void SimpleReportDlg::makeReport() {
 						timeFromMins(pHelper->periodMins())));
 		rHelper.appendParagraph(tr("Measured: ").append(cHelper.getTotalTime()));
 
-		for(QString cat : cHelper.getRootCatList()){
+        for(auto cat : cHelper.getRootCatList()){
             rHelper.appendValueTable(cat,cHelper.getRootCatReport(cat));
 		}
 

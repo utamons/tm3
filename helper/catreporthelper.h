@@ -10,7 +10,7 @@ public:
     explicit CatReportHelper(const std::shared_ptr<PeriodHelper> pHelper);
 
 	QList<std::pair<QString,QString>> getRootCatReport(QString rootName) const;
-	QList<QString> getRootCatList() const;
+    QList<QString> getRootCatList() const;
 	QString getTotalTime() const;
     long getTotalTime(QString catName) const;
 	long getCatTime(int catId) const;

@@ -45,13 +45,13 @@ QList<std::pair<QString,QString>> CatReportHelper::getRootCatReport(QString root
 
 QList<QString> CatReportHelper::getRootCatList() const {
 	QSqlQuery q(getDb());
-	QList<QString> result;
+    QList<QString> result;
 	q.prepare("select name from cat_rb where parent_id=0");
 	execQuery(q,[q,&result]() {
 			auto name = field<QString>(q,"name");
-			result.append(name);
+            result.append(name);
 		});
-	return result;
+    return result;
 }
 
 QString CatReportHelper::getTotalTime() const {
