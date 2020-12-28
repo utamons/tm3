@@ -7,9 +7,11 @@ CatReportHelper::CatReportHelper(const std::shared_ptr<PeriodHelper> pHelper) :
 
 QList<std::pair<QString,QString>> CatReportHelper::getRootCatReport(QString rootName) const {
     QList<std::pair<QString,QString>> result;
+    qDebug()<<"Category "<<rootName;
 
     QList<int> ql;
     ql = childLeafIds(rootId(rootName), ql);
+    qDebug()<<"Leaves found "<<ql.size();
 
     if (ql.size() > 0) {
         QString sql =
@@ -32,7 +34,7 @@ QList<std::pair<QString,QString>> CatReportHelper::getRootCatReport(QString root
 
         execQuery(q, [q,&result]() {
             auto nm = field<QString>(q,"nm");
-            auto sm = timeFromMins(field<long>(q,"sm"));
+            auto sm = timeFromMins(field<int>(q,"sm"));
             result.append(std::pair<QString,QString>(nm,sm));
         });
 

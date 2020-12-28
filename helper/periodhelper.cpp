@@ -185,12 +185,12 @@ QString PeriodHelper::getMonthName(QDate dt) {
 
 int PeriodHelper::dt1toMinsSinceEpoch() const {
 	checkValid();
-    return static_cast<int>(dtFirst->date().startOfDay().toMSecsSinceEpoch())/60000;
+    return static_cast<int>(dtFirst->date().startOfDay().toMSecsSinceEpoch()/60000);
 }
 
 int PeriodHelper::dt2toMinsSinceEpoch() const {
 	checkValid();
-    return static_cast<int>(dtSecond->date().startOfDay().addDays(1).toMSecsSinceEpoch()-1)/60000;
+    return static_cast<int>((dtSecond->date().startOfDay().addDays(1).toMSecsSinceEpoch()-1)/60000);
 }
 
 void PeriodHelper::parentDead() {
