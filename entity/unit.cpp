@@ -14,7 +14,7 @@ Unit::Unit(const Unit &that) {
     this->name = that.name;
 }
 
-bool Unit::operator ==(const Unit &that) {
+bool Unit::operator ==(const Unit &that) const{
     return id == that.id && name == that.name;
 }
 

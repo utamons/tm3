@@ -13,7 +13,7 @@
   <property name="font">
    <font>
     <family>Tahoma</family>
-    <pointsize>15</pointsize>
+    <pointsize>10</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
      <property name="font">
       <font>
        <family>Tahoma</family>
-       <pointsize>15</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="frameShape">
@@ -45,12 +45,6 @@
         </property>
         <item row="1" column="1">
          <widget class="QSpinBox" name="spinHour">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="maximum">
            <number>23</number>
           </property>
@@ -58,12 +52,6 @@
         </item>
         <item row="0" column="2">
          <widget class="QLabel" name="label_3">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="text">
            <string>m.</string>
           </property>
@@ -71,12 +59,6 @@
         </item>
         <item row="1" column="0">
          <widget class="QDateTimeEdit" name="editDateTime">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="currentSection">
            <enum>QDateTimeEdit::MinuteSection</enum>
           </property>
@@ -84,12 +66,6 @@
         </item>
         <item row="1" column="2">
          <widget class="QSpinBox" name="spinMin">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="maximum">
            <number>55</number>
           </property>
@@ -106,12 +82,6 @@
             <height>0</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="editable">
            <bool>true</bool>
           </property>
@@ -122,12 +92,6 @@
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="text">
            <string>Date and time:</string>
           </property>
@@ -140,12 +104,6 @@
             <width>32</width>
             <height>32</height>
            </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
           </property>
           <property name="text">
            <string>...</string>
@@ -164,12 +122,6 @@
         </item>
         <item row="0" column="3">
          <widget class="QLabel" name="label_4">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="text">
            <string>Category:</string>
           </property>
@@ -177,12 +129,6 @@
         </item>
         <item row="0" column="1">
          <widget class="QLabel" name="label_2">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="text">
            <string>h.</string>
           </property>
@@ -231,12 +177,6 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="text">
            <string>Category name:</string>
           </property>
@@ -266,17 +206,23 @@
         </item>
         <item>
          <widget class="QToolButton" name="btnAddRate">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>16</width>
+            <height>16</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
+          <property name="maximumSize">
+           <size>
+            <width>18</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
            <string>...</string>
@@ -297,15 +243,15 @@
          <widget class="QToolButton" name="btnDelRate">
           <property name="minimumSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>16</width>
+            <height>16</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
+          <property name="maximumSize">
+           <size>
+            <width>18</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
            <string>...</string>
@@ -324,12 +270,6 @@
         </item>
         <item>
          <widget class="QLabel" name="labelTag">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
@@ -345,15 +285,15 @@
          <widget class="QToolButton" name="btnAddTag">
           <property name="minimumSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>16</width>
+            <height>16</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
+          <property name="maximumSize">
+           <size>
+            <width>18</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
            <string>...</string>
@@ -374,15 +314,15 @@
          <widget class="QToolButton" name="btnDelTag">
           <property name="minimumSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>16</width>
+            <height>16</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
+          <property name="maximumSize">
+           <size>
+            <width>18</width>
+            <height>18</height>
+           </size>
           </property>
           <property name="text">
            <string>...</string>
@@ -405,12 +345,6 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QTableView" name="tableRates">
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="alternatingRowColors">
            <bool>true</bool>
           </property>
@@ -424,12 +358,6 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
           <property name="alternatingRowColors">
            <bool>true</bool>
           </property>
@@ -439,12 +367,6 @@
       </item>
       <item>
        <widget class="QLabel" name="label_5">
-        <property name="font">
-         <font>
-          <family>Tahoma</family>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
         <property name="text">
          <string>Comment:</string>
         </property>
@@ -458,12 +380,6 @@
           <height>60</height>
          </size>
         </property>
-        <property name="font">
-         <font>
-          <family>Tahoma</family>
-          <pointsize>15</pointsize>
-         </font>
-        </property>
        </widget>
       </item>
      </layout>
@@ -474,7 +390,7 @@
      <property name="font">
       <font>
        <family>Tahoma</family>
-       <pointsize>15</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="orientation">

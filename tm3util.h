@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <QDebug>
-#include <QRegExp>
 
 
 const int START_DEV_YEAR = 2013;

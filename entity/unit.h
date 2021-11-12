@@ -12,7 +12,7 @@ public:
 
     Unit (const Unit &that);
 
-    bool operator == ( Unit const &that );
+    bool operator == ( Unit const &that ) const;
 
     QString name;
 	int id;

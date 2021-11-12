@@ -16,6 +16,9 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::PreventContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>TM3</string>
   </property>
@@ -25,8 +28,8 @@
   </property>
   <property name="iconSize">
    <size>
-    <width>48</width>
-    <height>48</height>
+    <width>24</width>
+    <height>24</height>
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -38,13 +41,13 @@
      <number>0</number>
     </property>
     <property name="topMargin">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
      <number>0</number>
     </property>
     <property name="bottomMargin">
-     <number>6</number>
+     <number>0</number>
     </property>
     <item>
      <widget class="QFrame" name="frame">
@@ -81,7 +84,7 @@
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>41</height>
+           <height>32</height>
           </size>
          </property>
          <property name="frameShape">
@@ -90,7 +93,10 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2000">
           <property name="spacing">
            <number>3</number>
           </property>
@@ -110,8 +116,8 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>24</width>
-              <height>24</height>
+              <width>16</width>
+              <height>16</height>
              </size>
             </property>
             <property name="autoRaise">
@@ -126,8 +132,8 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>24</width>
-              <height>24</height>
+              <width>16</width>
+              <height>16</height>
              </size>
             </property>
            </widget>
@@ -139,8 +145,8 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>24</width>
-              <height>24</height>
+              <width>16</width>
+              <height>16</height>
              </size>
             </property>
            </widget>
@@ -158,8 +164,8 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>24</width>
-              <height>24</height>
+              <width>16</width>
+              <height>16</height>
              </size>
             </property>
            </widget>
@@ -209,8 +215,8 @@
                </property>
                <property name="iconSize">
                 <size>
-                 <width>24</width>
-                 <height>24</height>
+                 <width>16</width>
+                 <height>16</height>
                 </size>
                </property>
               </widget>
@@ -220,7 +226,7 @@
                <property name="font">
                 <font>
                  <family>Tahoma</family>
-                 <pointsize>15</pointsize>
+                 <pointsize>10</pointsize>
                 </font>
                </property>
                <property name="calendarPopup">
@@ -242,8 +248,8 @@
                </property>
                <property name="iconSize">
                 <size>
-                 <width>24</width>
-                 <height>24</height>
+                 <width>16</width>
+                 <height>16</height>
                 </size>
                </property>
               </widget>
@@ -262,8 +268,8 @@
                </property>
                <property name="iconSize">
                 <size>
-                 <width>24</width>
-                 <height>24</height>
+                 <width>16</width>
+                 <height>16</height>
                 </size>
                </property>
               </widget>
@@ -294,7 +300,7 @@
             <property name="font">
              <font>
               <family>Tahoma</family>
-              <pointsize>15</pointsize>
+              <pointsize>10</pointsize>
              </font>
             </property>
             <property name="text">
@@ -329,7 +335,7 @@
          <property name="font">
           <font>
            <family>Tahoma</family>
-           <pointsize>15</pointsize>
+           <pointsize>10</pointsize>
           </font>
          </property>
          <property name="alternatingRowColors">
@@ -348,7 +354,7 @@
      <x>0</x>
      <y>0</y>
      <width>824</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

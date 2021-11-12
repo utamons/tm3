@@ -6,6 +6,7 @@
 #include <QtGui>
 #include <QApplication>
 #include <QMessageBox>
+#include <QRegularExpression>
 
 bool checkWorkDir() {
 	bool result = true;
@@ -41,7 +42,7 @@ QDate toDate(quint64 epochMins) {
 }
 
 QString getWorkPath() {
-	QString homePath = "/Users/oleg/Dropbox";
+    QString homePath = "C:/Home/Documents";
 	QString wdPath = homePath.append("/db");
 	return QDir::toNativeSeparators(wdPath);
 }
@@ -158,8 +159,8 @@ void removeLock(QString lockPath) {
 }
 
 bool isNumeric(QString val) {
-	QRegExp re("\\d*");
-	return re.exactMatch(val);
+    QRegularExpression re("\\d*");
+    return re.match(val).hasMatch();
 }
 
 

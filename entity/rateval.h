@@ -8,7 +8,7 @@ class RateVal : public Entity  {
 public:
     RateVal ();
 
-    bool operator==(const RateVal &that);
+    bool operator==(const RateVal &that) const;
 
     bool isEmpty() const override;
 

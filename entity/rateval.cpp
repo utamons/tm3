@@ -5,7 +5,7 @@ RateVal::RateVal() {
     value = 0.0;
 }
 
-bool RateVal::operator==(const RateVal &that) {
+bool RateVal::operator==(const RateVal &that) const {
     return !that.isEmpty() && that.rate.id == this->rate.id && that.value == this->value;
 }
 

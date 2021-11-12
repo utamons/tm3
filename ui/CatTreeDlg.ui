@@ -10,18 +10,32 @@
     <height>526</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Categories</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>1</number>
+   </property>
+   <property name="topMargin">
+    <number>1</number>
+   </property>
+   <property name="rightMargin">
+    <number>1</number>
+   </property>
+   <property name="bottomMargin">
+    <number>1</number>
+   </property>
    <item>
     <widget class="QFrame" name="frame">
-     <property name="font">
-      <font>
-       <family>Tahoma</family>
-       <pointsize>15</pointsize>
-      </font>
-     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -29,12 +43,26 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="leftMargin">
+       <number>1</number>
+      </property>
+      <property name="topMargin">
+       <number>1</number>
+      </property>
+      <property name="rightMargin">
+       <number>1</number>
+      </property>
+      <property name="bottomMargin">
+       <number>1</number>
+      </property>
       <item>
        <widget class="QTreeView" name="treeView">
         <property name="font">
          <font>
-          <family>Tahoma</family>
-          <pointsize>15</pointsize>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="contextMenuPolicy">
@@ -65,6 +93,18 @@
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="leftMargin">
+         <number>2</number>
+        </property>
+        <property name="topMargin">
+         <number>2</number>
+        </property>
+        <property name="rightMargin">
+         <number>2</number>
+        </property>
+        <property name="bottomMargin">
+         <number>2</number>
+        </property>
         <item>
          <widget class="QToolButton" name="btnAdd2Root">
           <property name="sizePolicy">
@@ -75,15 +115,15 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>20</width>
+            <height>20</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
+          <property name="maximumSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
           </property>
           <property name="text">
            <string>...</string>
@@ -110,15 +150,15 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>20</width>
+            <height>20</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
+          <property name="maximumSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
           </property>
           <property name="text">
            <string>...</string>
@@ -148,15 +188,15 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>18</width>
+            <height>18</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
+          <property name="maximumSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
           </property>
           <property name="text">
            <string>...</string>
@@ -177,15 +217,15 @@
          <widget class="QToolButton" name="btnDel">
           <property name="minimumSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>18</width>
+            <height>18</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <family>Tahoma</family>
-            <pointsize>15</pointsize>
-           </font>
+          <property name="maximumSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
           </property>
           <property name="text">
            <string>...</string>
@@ -231,20 +271,14 @@
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>56</height>
+       <height>42</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>56</height>
+       <height>35</height>
       </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Tahoma</family>
-       <pointsize>15</pointsize>
-      </font>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -256,25 +290,25 @@
       <number>0</number>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>7</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
       <item>
        <widget class="QPushButton" name="btnClose">
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>40</height>
+          <width>80</width>
+          <height>32</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>100</width>
-          <height>40</height>
+          <width>80</width>
+          <height>34</height>
          </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Tahoma</family>
-          <pointsize>15</pointsize>
-         </font>
         </property>
         <property name="text">
          <string>Close</string>
