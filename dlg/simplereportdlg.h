@@ -34,7 +34,7 @@ protected:
 
 	void restorePos() {
 		resize(restoreWinSize("SimpleReportDlg"));
-		move(restoreWinPos("SimpleReportDlg"));
+        //move(restoreWinPos("SimpleReportDlg"));
 	}
 
 public slots:
