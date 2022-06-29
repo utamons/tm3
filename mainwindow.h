@@ -35,6 +35,7 @@ public slots:
 	void actSimpleReport();
 	void today();
 	void toggleInsKey();
+    void actSetDark();
 
 private:
 	QString getLoadStr(double load);

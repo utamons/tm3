@@ -229,6 +229,10 @@ void MainWindow::toggleInsKey(){
     showStatus();
 }
 
+void MainWindow::actSetDark() {
+    setDark();
+}
+
 void MainWindow::actTagDlg() {
     TagListDlg tagDlg;
     tagDlg.setModal(true);

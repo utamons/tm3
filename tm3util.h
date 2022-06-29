@@ -50,3 +50,5 @@ QString tr(const char *str);
 void saveInsKey(QString key);
 
 QString restoreInsKey();
+
+void setDark();
