@@ -5,7 +5,7 @@
 CatListModel::CatListModel(QObject *parent) :  BaseListModel<Category>(parent) {
     QSqlQuery q(getDb());
     q.prepare("select id,name,abbrev from cat_rb where virtual=0 order by abbrev");
-    execQuery(q,[q,this]() {
+    execQuery(q,[&q,this]() {
             Category c;
             c.id = field<int>(q,"id");
             c.abbrev = field<QString>(q,"abbrev");

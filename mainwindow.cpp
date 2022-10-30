@@ -188,7 +188,7 @@ void MainWindow::showStatus() {
     QSqlQuery q(getDb());
     QString status;
     q.prepare("select count(id) as cnt from actions");
-    execQuery(q, [q,&status]() {
+    execQuery(q, [&q,&status]() {
         int cnt = field<int>(q,"cnt");
         status.append(tr("Overall records: ")+QString::number(cnt));
     });

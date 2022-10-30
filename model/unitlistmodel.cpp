@@ -7,7 +7,7 @@ UnitListModel::UnitListModel(QObject *parent) : BaseListModel<Unit>(parent) {
 
     q.prepare("select id , name from unit_rb");
 
-    execQuery(q, [q,this]() {
+    execQuery(q, [&q,this]() {
         rowList.append(
                     Unit(field<int>(q,"id"), field<QString>(q,"name"))
                     );

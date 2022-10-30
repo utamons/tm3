@@ -47,7 +47,7 @@ void TagComboModel::init() {
 
     q.prepare("select id , name from tag_rb");
 
-    execQuery(q, [q,this]() {
+    execQuery(q, [&q,this]() {
         rowList.append(
                     Unit(field<int>(q,"id"), field<QString>(q,"name"))
                     );

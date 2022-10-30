@@ -21,7 +21,7 @@ QList<std::pair<QString,QString>> RateReportHelper::getRatesReport() const {
     QMap<Rate,double> report;
 	RateListModel rModel;
 
-	execQuery(q, [&rModel,&report,q]() {
+    execQuery(q, [&rModel,&report,&q]() {
         Rate rt = rModel.rateById(field<int>(q,"rid"));
         double val = report.value(rt,0.0);
        report.insert(rt,val+RateReportHelper::calculateRate(q));
@@ -37,7 +37,7 @@ QList<std::pair<QString,QString>> RateReportHelper::getRatesReport() const {
 	return result;
 }
 
-double RateReportHelper::calculateRate(QSqlQuery q) {
+double RateReportHelper::calculateRate(QSqlQuery& q) {
 
 	double mins = field<double>(q,"mins");
 	double val = field<double>(q,"val");
@@ -68,7 +68,7 @@ double RateReportHelper::getRateSum(int rateId) const {
 	q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
 	q.bindValue(":rid", rateId);
 
-	execQuery(q, [&result,q]() {
+    execQuery(q, [&result,&q]() {
 			result += RateReportHelper::calculateRate(q);
 	});
 

@@ -18,5 +18,5 @@ public:
 private:
 
     const std::shared_ptr<PeriodHelper> pHelper;
-	double static calculateRate(QSqlQuery q);
+    double static calculateRate(QSqlQuery &q);
 };

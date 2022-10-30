@@ -42,10 +42,10 @@ protected:
 SqlQueryStatus execQuery(const QString query, bool checkForeignKey = false);
 
 // Executes prepared SQL query, which doesn't return result set.
-SqlQueryStatus execQuery(QSqlQuery query, bool checkForeignKey = false);
+SqlQueryStatus execQuery(QSqlQuery &query, bool checkForeignKey = false);
 
 // Performs function on every record
-void execQuery(QSqlQuery q, std::function<void ()> f);
+void execQuery(QSqlQuery &q, std::function<void ()> f);
 
 void beginTransaction();
 
@@ -57,16 +57,16 @@ QSqlDatabase getDb();
 
 // Gets field value
 template <typename T>
-T field(QSqlQuery q, const char *fieldName);
+T field(const QSqlQuery& q, const char *fieldName);
 template <typename T>
-T field(QSqlQuery q, const char *fieldName) {
+T field(const QSqlQuery& q, const char *fieldName) {
     return qvariant_cast<T>(q.value(q.record().indexOf(fieldName)));
 }
 
 template <typename T>
-T field(QSqlQuery q, int fldIdx);
+T field(const QSqlQuery& q, int fldIdx);
 template <typename T>
-T field(QSqlQuery q, int fldIdx) {
+T field(const QSqlQuery& q, int fldIdx) {
     return qvariant_cast<T>(q.value(fldIdx));
 }
 
@@ -79,7 +79,7 @@ int maxDBRecords() {
 
     T::prepareDBMaxRecords(q);
 
-    execQuery(q,[q,&result] {
+    execQuery(q,[&q,&result] {
         result = field<int>(q,0);
     });
 
@@ -95,7 +95,7 @@ bool isDBUnique(T entity) {
 
     B::prepareDBUnique(q,entity);
 
-    execQuery(q, [q,&result] {
+    execQuery(q, [&q,&result] {
         result = field<int>(q, 0) == 0;
     });
 

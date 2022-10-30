@@ -14,6 +14,8 @@ public:
 
     bool operator == ( Unit const &that ) const;
 
+    Unit& operator = (const Unit& other);
+
     QString name;
 	int id;
 

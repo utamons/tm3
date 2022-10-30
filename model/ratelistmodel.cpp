@@ -10,7 +10,7 @@ RateListModel::RateListModel(QList<Rate> excludes, QObject *parent) :
               "r.time as rtime, u.id as uid, u.name as uname from "
               "rate_rb r, unit_rb u where r.unit_id=u.id order by r.name");
 
-    execQuery(q, [q,excludes,this]() {
+    execQuery(q, [&q,excludes,this]() {
         int rid = field<int>(q,"rid");
         for (Rate rate: excludes) {
             if (rate.id == rid)

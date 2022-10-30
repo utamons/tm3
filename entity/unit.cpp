@@ -18,6 +18,14 @@ bool Unit::operator ==(const Unit &that) const{
     return id == that.id && name == that.name;
 }
 
+Unit &Unit::operator =(const Unit &other){
+    if (this != &other) {
+        this->id = other.id;
+        this->name = other.name;
+    }
+    return *this;
+}
+
 QString Unit::toString() const {
     return name;
 }

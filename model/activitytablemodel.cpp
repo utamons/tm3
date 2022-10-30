@@ -134,7 +134,7 @@ SqlQueryStatus ActivityTableModel::remove(const QModelIndex &row) {
 			nextDt.setTime(time); // set seconds to zero
             q.prepare("select id,cat_id from actions where time=:time");
             q.bindValue(":time", toEpochMins(nextDt));
-            execQuery(q, [act,q]() {
+            execQuery(q, [act,&q]() {
                 if (act.cat.id == field<int>(q,"cat_id")) {
                     QSqlQuery qDel(getDb());
                     int id = field<int>(q,"id");
@@ -221,7 +221,7 @@ QDateTime ActivityTableModel::getLastTime() {
     QDateTime maxTime, result;
     int mins = 0;
     bool found = false;
-    execQuery(q, [q,&maxTime,&found]() {
+    execQuery(q, [&q,&maxTime,&found]() {
         maxTime = toDateTime(field<long>(q,"m"));
         found = maxTime.toMSecsSinceEpoch()>0;
     });
@@ -229,7 +229,7 @@ QDateTime ActivityTableModel::getLastTime() {
     if (found) {
         q.prepare("select mins from actions where time=:time");
         q.bindValue(":time", toEpochMins(maxTime));
-        execQuery(q, [q,&mins]() {mins = field<int>(q,"mins");});
+        execQuery(q, [&q,&mins]() {mins = field<int>(q,"mins");});
         Q_ASSERT(mins > 0);
         result = maxTime.addSecs(mins * 60);
     } else {
@@ -253,7 +253,7 @@ void ActivityTableModel::init(QDateTime begin, QDateTime end) {
     beginResetModel();
 
     execQuery(q,
-              [q,this]() {
+              [&q,this]() {
         Activity act;
         act.id = field<int>(q,"aid");
         act.cat.id = field<int>(q,"cat_id");
@@ -283,7 +283,7 @@ void ActivityTableModel::fillData(Activity &act) {
                 "l.rate_id=r.id and r.unit_id=u.id and l.act_id=:act_id");
     q.bindValue(":act_id", act.id);
 
-    execQuery(q, [q,&act] () {
+    execQuery(q, [&q,&act] () {
         RateVal rateVal;
         rateVal.value = field<double>(q,"value");
         rateVal.rate.id = field<int>(q,"rid");
@@ -301,7 +301,7 @@ void ActivityTableModel::fillData(Activity &act) {
                 "l.tag_id=t.id and l.act_id=:act_id");
     q.bindValue(":act_id", act.id);
 
-    execQuery(q, [q,&act] () {
+    execQuery(q, [&q,&act] () {
         act.tagList.append(Unit(field<int>(q,"tid"),
                                 field<QString>(q,"tname")));
     });

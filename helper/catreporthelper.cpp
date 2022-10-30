@@ -32,7 +32,7 @@ QList<std::pair<QString,QString>> CatReportHelper::getRootCatReport(QString root
         q.bindValue(":dt1", pHelper->dt1toMinsSinceEpoch());
         q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
 
-        execQuery(q, [q,&result]() {
+        execQuery(q, [&q,&result]() {
             auto nm = field<QString>(q,"nm");
             auto sm = timeFromMins(field<int>(q,"sm"));
             result.append(std::pair<QString,QString>(nm,sm));
@@ -47,7 +47,7 @@ QList<QString> CatReportHelper::getRootCatList() const {
 	QSqlQuery q(getDb());
     QList<QString> result;
 	q.prepare("select name from cat_rb where parent_id=0");
-	execQuery(q,[q,&result]() {
+    execQuery(q,[&q,&result]() {
 			auto name = field<QString>(q,"name");
             result.append(name);
 		});
@@ -63,7 +63,7 @@ QString CatReportHelper::getTotalTime() const {
     q.bindValue(":dt1", pHelper->dt1toMinsSinceEpoch());
     q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
 
-    execQuery(q, [q,&total]() {
+    execQuery(q, [&q,&total]() {
         total = field<double>(q,"total");
     });
 
@@ -98,7 +98,7 @@ long CatReportHelper::getTotalTime(QString catName) const {
     q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
 
     long result;
-    execQuery(q, [q,&result]() {
+    execQuery(q, [&q,&result]() {
         result = field<long>(q,"sm");
     });
 
@@ -115,7 +115,7 @@ long CatReportHelper::getCatTime(int catId) const {
     q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
     q.bindValue(":id",catId);
 
-    execQuery(q, [q,&total]() {
+    execQuery(q, [&q,&total]() {
         total = field<long>(q,"total");
     });
 
@@ -127,7 +127,7 @@ QList<int> CatReportHelper::childLeafIds(int parentId, QList<int> &ql) const {
     q.prepare("select id,name from cat_rb where parent_id=:parent_id");
     q.bindValue(":parent_id", parentId);
 
-    execQuery(q, [q,&ql,this]() {
+    execQuery(q, [&q,&ql,this]() {
         childLeafIds(field<int>(q,"id"),ql);
     });
 
@@ -142,7 +142,7 @@ int CatReportHelper::rootId(QString rootName) const {
     q.bindValue(":name", rootName);
 
     int rootId;
-    execQuery(q, [q,&rootId]() {
+    execQuery(q, [&q,&rootId]() {
         rootId = field<int>(q,"id");
     });
 

@@ -75,7 +75,7 @@ public:
 
      int childrenCount() const { return children.length(); }
 
-     TreeNode<T> * const getParent() { return parent; }
+     TreeNode<T> * getParent() { return parent; }
 
      bool isRoot() const {
          return parent == nullptr;

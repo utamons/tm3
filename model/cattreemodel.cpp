@@ -330,7 +330,7 @@ void CatTreeModel::buildBranch(TreeNode<Category> *parent) {
     q.prepare("select id,name,abbrev,virtual,comment,expanded "
               "from cat_rb where parent_id=:parentId");
     q.bindValue(":parentId", parent->getId());
-    execQuery(q, [q,this,parent] () {
+    execQuery(q, [&q,this,parent] () {
         Category cat;
         cat.id = field<int>(q,"id");
         cat.name = field<QString>(q,"name");
@@ -355,14 +355,14 @@ void CatTreeModel::fillData(Category &cat) {
               "from cat_rate_link l, rate_rb r, unit_rb u where "
               "l.rate_id=r.id and r.unit_id=u.id and l.cat_id=:cat_id");
     q.bindValue(":cat_id", cat.id);
-    execQuery(q, [q,&cat] () {
+    execQuery(q, [&q,&cat] () {
         RateVal rateVal;
-        rateVal.value = field<double>(q,"def_value");
-        rateVal.rate.id = field<int>(q,"rid");
-        rateVal.rate.name = field<QString>(q,"rname");
-        rateVal.rate.time = field<int>(q,"rtime");
-        rateVal.rate.comment = field<QString>(q,"rcomment");
-        rateVal.rate.unit = Unit (field<int>(q,"uid"), field<QString>(q,"uname"));
+        rateVal.value = field<double>(std::move(q),"def_value");
+        rateVal.rate.id = field<int>(std::move(q),"rid");
+        rateVal.rate.name = field<QString>(std::move(q),"rname");
+        rateVal.rate.time = field<int>(std::move(q),"rtime");
+        rateVal.rate.comment = field<QString>(std::move(q),"rcomment");
+        rateVal.rate.unit = Unit (field<int>(std::move(q),"uid"), field<QString>(std::move(q),"uname"));
 
         cat.rates.append(rateVal);
     });
@@ -373,7 +373,7 @@ void CatTreeModel::fillData(Category &cat) {
                 "l.tag_id=t.id and l.cat_id=:cat_id");
     q.bindValue(":cat_id", cat.id);
 
-    execQuery(q, [q,&cat] () {
+    execQuery(q, [&q, &cat] () {
         cat.tagList.append(Unit(field<int>(q,"tid"),
                                 field<QString>(q,"tname")));
     });

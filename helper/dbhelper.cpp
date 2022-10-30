@@ -168,7 +168,7 @@ SqlQueryStatus execQuery(const QString query, bool checkForeignKey) {
 }
 
 
-SqlQueryStatus execQuery(QSqlQuery q, bool checkForeignKey) {
+SqlQueryStatus execQuery(QSqlQuery& q, bool checkForeignKey) {
 	if (!q.exec()) {
 		if (checkForeignKey && q.lastError().databaseText() == "FOREIGN KEY constraint failed") {
 			return FOREIGN_KEY_FAIL;
@@ -186,7 +186,7 @@ QSqlDatabase getDb() {
 }
 
 
-void execQuery(QSqlQuery q, std::function<void()> f) {
+void execQuery(QSqlQuery& q, std::function<void()> f) {
 	if (q.exec()) {
 		while (q.next()) {
 			f();

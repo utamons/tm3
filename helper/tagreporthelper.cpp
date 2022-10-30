@@ -18,7 +18,7 @@ QList<std::pair<QString,QString>> TagReportHelper::getTagsReport() const {
 	q.bindValue(":dt1", pHelper->dt1toMinsSinceEpoch());
 	q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
 
-	execQuery(q, [q,&result]() {
+    execQuery(q, [&q,&result]() {
 		auto nm = field<QString>(q,"nm");
 		auto sm = timeFromMins(field<long>(q,"sm"));
 		result.append(std::pair<QString,QString>(nm,sm));
@@ -38,7 +38,7 @@ long TagReportHelper::getTagTime(int tagId) const {
 	q.bindValue(":dt1", pHelper->dt1toMinsSinceEpoch());
 	q.bindValue(":dt2", pHelper->dt2toMinsSinceEpoch());
 
-	execQuery(q, [q,&result]() {
+    execQuery(q, [&q,&result]() {
 		result = field<long>(q,"sm");
 	});
 
