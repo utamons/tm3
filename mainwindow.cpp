@@ -249,9 +249,9 @@ QString MainWindow::getLoadStr(double load) {
 
     QString result;
 
-    if (load > 6 && load < 7.5) {
+    if (load > 10 && load < 12) {
         result = BOLD+ORANGE+"'>N-load: "+strsum+"</span>";
-    } else if (load > 7.5){
+    } else if (load > 12){
         result = BOLD+RED+"'>N-load: "+strsum+"</span>";
     } else {
         result = "N-load: "+strsum;
