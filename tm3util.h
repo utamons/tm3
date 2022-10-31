@@ -5,7 +5,7 @@
 
 
 const int START_DEV_YEAR = 2013;
-const QString PROGRAM_VERSION = "0.0.1";
+const QString PROGRAM_VERSION = "0.0.2";
 
 bool checkWorkDir();
 QString getWorkPath();

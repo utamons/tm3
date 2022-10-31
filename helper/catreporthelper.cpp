@@ -46,7 +46,7 @@ QList<std::pair<QString,QString>> CatReportHelper::getRootCatReport(QString root
 QList<QString> CatReportHelper::getRootCatList() const {
 	QSqlQuery q(getDb());
     QList<QString> result;
-	q.prepare("select name from cat_rb where parent_id=0");
+    q.prepare("select name from cat_rb where parent_id=0 and name <> 'RECYCLE'");
     execQuery(q,[&q,&result]() {
 			auto name = field<QString>(q,"name");
             result.append(name);
