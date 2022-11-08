@@ -241,6 +241,7 @@ void MainWindow::actTagDlg() {
 }
 
 QString MainWindow::getLoadStr(double load) {
+    const QString GREEN = "#00aa00";
     const QString RED = "#dd0000";
     const QString ORANGE="#fa7e25";
     const QString BOLD="<span style='font-size:10pt; font-weight:600; color:";
@@ -253,6 +254,8 @@ QString MainWindow::getLoadStr(double load) {
         result = BOLD+ORANGE+"'>N-load: "+strsum+"</span>";
     } else if (load > 12){
         result = BOLD+RED+"'>N-load: "+strsum+"</span>";
+    } else if (load > 0) {
+        result = BOLD+GREEN+"'>N-load: "+strsum+"</span>";
     } else {
         result = "N-load: "+strsum;
     }
